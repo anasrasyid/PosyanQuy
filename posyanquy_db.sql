@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 07:06 AM
+-- Generation Time: Apr 09, 2020 at 04:42 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -31,11 +31,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `anak` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `tempat_lahir` text NOT NULL,
+  `tempat_lahir` varchar(20) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `Berat Badan` double NOT NULL,
-  `id_ibu` int(11) NOT NULL,
-  `id_history` int(11) NOT NULL
+  `berat_badan` double NOT NULL,
+  `id_ibu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -60,7 +59,8 @@ CREATE TABLE `history` (
   `id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `data` text NOT NULL,
-  `id_imunisasi` int(11) NOT NULL
+  `id_imunisasi` int(11) NOT NULL,
+  `id_anak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,7 +72,9 @@ CREATE TABLE `history` (
 CREATE TABLE `ibu` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `alamat` text NOT NULL
+  `alamat` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -98,7 +100,9 @@ CREATE TABLE `imunisasi` (
 
 CREATE TABLE `kader` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -110,8 +114,7 @@ CREATE TABLE `kader` (
 --
 ALTER TABLE `anak`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_ANAK_IBU` (`id_ibu`),
-  ADD KEY `FK_ANAK_HISTORY` (`id_history`);
+  ADD KEY `FK_ANAK_IBU` (`id_ibu`);
 
 --
 -- Indexes for table `antrian`
@@ -125,7 +128,8 @@ ALTER TABLE `antrian`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_HISTORY` (`id_imunisasi`);
+  ADD KEY `FK_HISTORY_IMUNISASI` (`id_imunisasi`),
+  ADD KEY `FK_HISTORY_ANAK` (`id_anak`);
 
 --
 -- Indexes for table `ibu`
@@ -194,7 +198,6 @@ ALTER TABLE `kader`
 -- Constraints for table `anak`
 --
 ALTER TABLE `anak`
-  ADD CONSTRAINT `FK_ANAK_HISTORY` FOREIGN KEY (`id_history`) REFERENCES `history` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_ANAK_IBU` FOREIGN KEY (`id_ibu`) REFERENCES `ibu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -207,7 +210,8 @@ ALTER TABLE `antrian`
 -- Constraints for table `history`
 --
 ALTER TABLE `history`
-  ADD CONSTRAINT `FK_HISTORY` FOREIGN KEY (`id_imunisasi`) REFERENCES `imunisasi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_HISTORY_ANAK` FOREIGN KEY (`id_anak`) REFERENCES `anak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_HISTORY_IMUNISASI` FOREIGN KEY (`id_imunisasi`) REFERENCES `imunisasi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `imunisasi`
