@@ -138,9 +138,10 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nama</th>
+              <th scope="col">Syarat umur</th>
               <th scope="col">Deskripsi</th>
               <th scope="col">Periode</th>
-              <th scope="col">Syarat umur</th>
+              <th scope="col">ID Kader</th>
               <th scope="col">Setting</th>
             </tr>
           </thead>
@@ -149,10 +150,11 @@
           <!-- loop disini -->
             <tr>
               <th scope="row">1</th>
-              <td>Covid 69</td>
-              <td>buat anti corona</td>
-              <td>dd-mm-yyyy</td>
-              <td>1 bulan</td>
+              <td scope="col">Vaksin</td>
+              <td scope="col">1</td>
+              <td scope="col">qwehjasjdqwe</td>
+              <td scope="col">1</td>
+              <td scope="col">12301238</td>
               <td>
               <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" >Edit</button>
               <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
@@ -192,6 +194,8 @@
               <th scope="col">ID</th>
               <th scope="col">Nama</th>
               <th scope="col">Alamat</th>
+              <th scope="col">Email</th>
+              <th scope="col">Passowrd</th>
               <th scope="col">List Anak</th>
               <th scope="col">Setting</th>
             </tr>
@@ -203,6 +207,8 @@
               <th scope="row">1</th>
               <td>Jubaedah</td>
               <td>Kp rambutan</td>
+              <td>mail</td>
+              <td>password@</td>
               <td>
                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" >Lihat</button>
               </td>
@@ -247,8 +253,10 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nama</th>
-              <th scope="col">Berat Badan (kg)</th>
+              <th scope="col">Tempat Lahir</th>
               <th scope="col">Tanggal Lahir</th>
+              <th scope="col">Berat Badan (kg)</th>
+              <th scope="col">ID ibu</th>
               <th scope="col">History Vaksin</th>
               <th scope="col">Setting</th>
             </tr>
@@ -258,9 +266,11 @@
           <!-- loop disini -->
             <tr>
               <th scope="row">1</th>
-              <td>Annisa</td>
-              <td>1</td>
-              <td>dd/mm/yyyyy</td>
+              <th scope="col">annisa</th>
+              <th scope="col">Bandung</th>
+              <th scope="col">409123</th>
+              <th scope="col">4</th>
+              <th scope="col">4012</th>
               <td><button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" >Lihat</button></td>
               <td>
               <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" >Edit</button>
@@ -382,6 +392,10 @@
                       <label for="formGroupExampleInput2">Periode</label>
                       <input type="date" class="form-control" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
                     </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">ID kader</label>
+                      <input type="date" class="form-control" id="idKader" placeholder="dd-mm-yyyy" required>
+                    </div>
 
                   </form>
 
@@ -411,21 +425,25 @@
                   
                   <!-- form -->
                   <form>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">Nama</label> 
-                      <input type="text" class="form-control" id="nama" placeholder="Nama Vaksin" required value="<!-- php echo nama -->">
+                    <div class="formCreate">
+                      <label for="formGroupExampleInput">Nama</label>
+                      <input type="text" class="form-control" id="namaVaksin" placeholder="Nama Imunisasi" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Deskripsi</label>
-                      <textarea type="text" class="form-control" id="deskripsi" placeholder="Vaksin apa | Deskripsi" required value="<!-- php echo nama -->"></textarea>
+                      <textarea type="text" class="form-control" id="deskripsiVaksin" placeholder="Vaksin apa | Deskripsi" required></textarea>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Syarat Umur</label>
-                      <input type="text" class="form-control" id="syaratUmur" placeholder="Dalam Bulan" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" id="syaratUmur" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="date" class="form-control" id="periode" placeholder="dd-mm-yyyy" required value="<!-- php echo nama -->">
+                      <input type="date" class="form-control" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">ID kader</label>
+                      <input type="date" class="form-control" id="idKader" placeholder="dd-mm-yyyy" required>
                     </div>
 
                   </form>
@@ -516,9 +534,10 @@
                   
                   <!-- form -->
                   <form>
+
                     <div class="form-group">
                       <label for="formGroupExampleInput">Nama</label> 
-                      <input type="text" class="form-control" id="nama" placeholder="Nama Vaksin" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" id="nama" placeholder="Nama Ibu" required value="<!-- php echo nama -->">
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Alamat</label>
