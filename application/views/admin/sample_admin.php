@@ -71,8 +71,12 @@
         <a class="nav-link" id="v-pills-anak-tab" data-toggle="pill" href="#v-pills-anak" role="tab" aria-controls="v-pills-anak" aria-selected="false"><img src="<?= base_url('assets/child-solid.svg') ?>" style="height: 24px"> Anak</a>
         <a class="nav-link" id="v-pills-antrian-tab" data-toggle="pill" href="#v-pills-antrian" role="tab" aria-controls="v-pills-antrian" aria-selected="false"><img src="<?= base_url('assets/queue.svg') ?>" style="height: 24px"> Antrian</a>
 
+        <a class="nav-link" id="v-pills-article-tab" data-toggle="pill" href="#v-pills-article" role="tab" aria-controls="v-pills-article" aria-selected="false"><img src="<?= base_url('assets/article.svg') ?>" style="height: 24px"> Article</a>
+        
         <hr>
-        <a class="nav-link" id="v-pills-article-tab" data-toggle="pill" href="#v-pills-article" role="tab" aria-controls="v-pills-article" aria-selected="false">Article</a>
+        <!-- LOGOUT -->
+        <a class="nav-link" id="v-pills-logout-tab"  href="#logout"  aria-selected="false"><img src="<?= base_url('assets/log-out.svg') ?>" style="height: 24px">Logout</a>
+      
       </div>
       </div>
 
@@ -346,7 +350,7 @@
           <!--Content Atricle id='v-pills-article-tab'-->
           <div class="tab-pane fade" id="v-pills-article" role="tabpanel" aria-labelledby="v-pills-article-tab">
           <br>
-          <h1><img src="<?= base_url('assets/ic_dashboard_24px.svg') ?>" style="height: 48px">Article </h1>
+          <h1><img src="<?= base_url('assets/article.svg') ?>" style="height: 48px"> Article </h1>
 
           </div>
 
