@@ -12,6 +12,11 @@ class Anak_model extends CI_Model {
 		return $this->db->get('anak')->result_array();
 	}
     
+    //ini parameternya id ibu ya
+    public function get_by_ibu($id) {
+        
+    }
+    
     public function create_anak($data) {
 		return $this->db->insert('anak',$data);
 	}

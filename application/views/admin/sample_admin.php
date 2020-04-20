@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
   <!-- READ ME WAHAI BACKEND LEGEND 
   penulisan id & nama menggunakan camelCase
 
@@ -36,12 +35,11 @@
   Content Anak      = source page Anak
   Content Antrian   = source page Antrian
   Content Article   = source page Article
-
   -->
 
   <head>
     <!--icon bar title-->
-    <link rel="icon" href="asset/ic_local_hospital_48px.1.svg" type="image/icon type">
+    <link rel="icon" href="<?= base_url('assets/ic_local_hospital_48px.1.svg') ?>" type="image/icon type">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -64,14 +62,14 @@
     <!--nav-->
     <div class="row m-1">
      <div class="col-3">
-      <h1><img src="asset/ic_local_hospital_48px.1.svg">PosyanQuy</h1>
+      <h1><img src="<?= base_url('assets/ic_local_hospital_48px.1.svg') ?>">PosyanQuy</h1>
       <p>Admin Panel<p>
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><img src="asset/ic_dashboard_24px.svg" style="height: 24px"> Dashboard</a>
-        <a class="nav-link" id="v-pills-imunisasi-tab" data-toggle="pill" href="#v-pills-imunisasi" role="tab" aria-controls="v-pills-imunisasi" aria-selected="false"><img src="asset/pill.svg" style="height: 24px"> Imunisasi</a>
-        <a class="nav-link" id="v-pills-ibu-tab" data-toggle="pill" href="#v-pills-ibu" role="tab" aria-controls="v-pills-ibu" aria-selected="false"><img src="asset/woman.svg" style="height: 24px"> Ibu</a>
-        <a class="nav-link" id="v-pills-anak-tab" data-toggle="pill" href="#v-pills-anak" role="tab" aria-controls="v-pills-anak" aria-selected="false"><img src="asset/child-solid.svg" style="height: 24px"> Anak</a>
-        <a class="nav-link" id="v-pills-antrian-tab" data-toggle="pill" href="#v-pills-antrian" role="tab" aria-controls="v-pills-antrian" aria-selected="false"><img src="asset/queue.svg" style="height: 24px"> Antrian</a>
+        <a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><img src="<?= base_url('assets/ic_dashboard_24px.svg') ?>" style="height: 24px"> Dashboard</a>
+        <a class="nav-link" id="v-pills-imunisasi-tab" data-toggle="pill" href="#v-pills-imunisasi" role="tab" aria-controls="v-pills-imunisasi" aria-selected="false"><img src="<?= base_url('assets/pill.svg') ?>" style="height: 24px"> Imunisasi</a>
+        <a class="nav-link" id="v-pills-ibu-tab" data-toggle="pill" href="#v-pills-ibu" role="tab" aria-controls="v-pills-ibu" aria-selected="false"><img src="<?= base_url('assets/woman.svg') ?>" style="height: 24px"> Ibu</a>
+        <a class="nav-link" id="v-pills-anak-tab" data-toggle="pill" href="#v-pills-anak" role="tab" aria-controls="v-pills-anak" aria-selected="false"><img src="<?= base_url('assets/child-solid.svg') ?>" style="height: 24px"> Anak</a>
+        <a class="nav-link" id="v-pills-antrian-tab" data-toggle="pill" href="#v-pills-antrian" role="tab" aria-controls="v-pills-antrian" aria-selected="false"><img src="<?= base_url('assets/queue.svg') ?>" style="height: 24px"> Antrian</a>
 
         <hr>
         <a class="nav-link" id="v-pills-article-tab" data-toggle="pill" href="#v-pills-article" role="tab" aria-controls="v-pills-article" aria-selected="false">Article</a>
@@ -85,7 +83,7 @@
           <!--Content Dashboard id='v-pills-dashboard-tab'-->
           <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
           <br>
-          <h1><img src="asset/ic_dashboard_24px.svg" style="height: 48px">Dashboard </h1>
+          <h1><img src="<?= base_url('assets/ic_dashboard_24px.svg') ?>" style="height: 48px">Dashboard </h1>
           <br>
           
           <ul class="nav">
@@ -121,7 +119,7 @@
           <!--Content Imunisasi id='v-pills-imunisasi-tab'-->
           <div class="tab-pane fade" id="v-pills-imunisasi" role="tabpanel" aria-labelledby="v-pills-imunisasi-tab">
           <br>
-          <h1><img src="asset/pill.svg" style="height: 48px">Imunisasi</h1>
+          <h1><img src="<?= base_url('assets/pill.svg') ?>" style="height: 48px">Imunisasi</h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <form class="form-inline">
@@ -142,7 +140,7 @@
               <th scope="col">Deskripsi</th>
               <th scope="col">Periode</th>
               <th scope="col">ID Kader</th>
-              <th scope="col">Setting</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -172,7 +170,7 @@
           <!--Content ibu id='v-pills-ibu-tab'-->
           <div class="tab-pane fade" id="v-pills-ibu" role="tabpanel" aria-labelledby="v-pills-ibu-tab">
           <br>
-          <h1><img src="asset/woman.svg" style="height: 48px">Ibu </h1>
+          <h1><img src="<?= base_url('assets/woman.svg') ?>" style="height: 48px">Ibu </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <form class="form-inline">
@@ -197,7 +195,7 @@
               <th scope="col">Email</th>
               <th scope="col">Passowrd</th>
               <th scope="col">List Anak</th>
-              <th scope="col">Setting</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -232,7 +230,7 @@
           <!--Content anak id='v-pills-anak-tab'-->
           <div class="tab-pane fade" id="v-pills-anak" role="tabpanel" aria-labelledby="v-pills-anak-tab">
           <br>
-          <h1><img src="asset/child-solid.svg" style="height: 48px">Anak </h1>
+          <h1><img src="<?= base_url('assets/child-solid.svg') ?>" style="height: 48px">Anak </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <form class="form-inline">
@@ -258,7 +256,7 @@
               <th scope="col">Berat Badan (kg)</th>
               <th scope="col">ID ibu</th>
               <th scope="col">History Vaksin</th>
-              <th scope="col">Setting</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -289,7 +287,7 @@
           <!--Content antrian id='v-pills-antrian-tab'-->
           <div class="tab-pane fade" id="v-pills-antrian" role="tabpanel" aria-labelledby="v-pills-antrian-tab">
           <br>
-          <h1><img src="asset/queue.svg" style="height: 48px">Antrian </h1>
+          <h1><img src="<?= base_url('assets/queue.svg') ?>" style="height: 48px">Antrian </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <form class="form-inline">
@@ -313,7 +311,7 @@
               <th scope="col">Waktu</th>
               <th scope="col">ID ibu</th>
               <th scope="col">Status</th>
-              <th scope="col">Setting</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -348,7 +346,7 @@
           <!--Content Atricle id='v-pills-article-tab'-->
           <div class="tab-pane fade" id="v-pills-article" role="tabpanel" aria-labelledby="v-pills-article-tab">
           <br>
-          <h1><img src="asset/ic_dashboard_24px.svg" style="height: 48px">Article </h1>
+          <h1><img src="<?= base_url('assets/ic_dashboard_24px.svg') ?>" style="height: 48px">Article </h1>
 
           </div>
 
@@ -624,7 +622,7 @@
                       <th scope="col">ID</th>
                       <th scope="col">Tanggal pemberian</th>
                       <th scope="col">Nama Vaksin</th>
-                      <th scope="col">Setting</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>

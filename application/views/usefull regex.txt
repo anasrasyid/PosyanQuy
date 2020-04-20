@@ -1,0 +1,3 @@
+Usefull regex
+
+"asset/([^"]*)" -> "<?= base_url\('assets/$1'\) ?>"

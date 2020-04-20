@@ -12,8 +12,18 @@ class Imunisasi extends CI_Controller {
         die('Ini controller antrian pada admin panel');
     }
     
-    public function create($id) {
-        
+    public function create() {
+        if ($this->input->method() === 'post') {
+            $data = [
+                'waktu' => ,
+                'id_ibu' => 
+            ];
+            if ($this->antrian->create($data)) {
+                redirect('admin');
+            } else {
+                die('gagal anjinh');
+            }
+            
     }
     
     public function verifikasi($id) {
@@ -21,10 +31,14 @@ class Imunisasi extends CI_Controller {
     }
     
     public function delete($id) {
-        
+        if ($this->antrian->delete($id)) {
+            redirect('admin');
+        } else {
+            die('gagal anjing');
+        }
     }
     
     public function search($keyword) {
-        
+        return json_encode($this->antrian->search($keyword));
     }
 }

@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-'''
+/*
 sudah diatur agar cara mengaksesnya http://localhost/posyanquy/{nama_method}
 tanpa nama controller User
-'''
+*/
+
 class User extends CI_Controller {
 
 	public function __construct() {

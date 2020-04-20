@@ -14,23 +14,51 @@ class Ibu extends CI_Controller {
     }
     
     public function create() {
-        
+        if ($this->input->method() === 'post') {
+            $data = [
+                'nama' => ,
+                'alamat' => ,
+                'email' => ,
+                'password' => 
+            ];
+            if ($this->ibu->create($data)) {
+                redirect('admin');
+            } else {
+                die('gagal anjing');
+            }
+        }
     }
     
     public function update($id) {
-        
+        if ($this->input->method() === 'post') {
+            $data = [
+                'nama' => ,
+                'alamat' => ,
+                'email' => ,
+                'password' => 
+            ];
+            if ($this->ibu->update($id, $data)) {
+                redirect('admin');
+            } else {
+                die('gagal anjing');
+            }
+        }
     }
     
     public function delete($id) {
-        
+        if ($this->ibu->delete($id)) {
+            redirect('admin');
+        } else {
+            die('gagal anjing');
+        }
     }
     
     public function search($keyword) {  
-        
+        return json_encode($this->ibu->search($keyword));
     }
     
     public function list_anak($id) {
-        
+       return json_encode($this->anak->get_by_ibu($id));
     }
     
 }
