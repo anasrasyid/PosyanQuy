@@ -30,7 +30,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">NO</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Periode</th>
@@ -40,40 +40,23 @@
                     <tbody>
         
                     <!-- loop disini -->
+                    <?php for ($i=0; $i < count($imunisasi); $i++) { ?>
+                    
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Covid 69</td>
-                        <td>buat anti corona</td>
-                        <td>dd-mm-yyyy</td>
-                        <td>1 bulan</td>
+                        <th scope="row"><?php echo ($i+1) ?></th>
+                        <td><?php echo $imunisasi[$i]['nama'] ?></td>
+                        <td><?php echo $imunisasi[$i]['Deskripsi'] ?></td>
+                        <td><?php echo $imunisasi[$i]['Periode'] ?></td>
+                        <td><?php echo $imunisasi[$i]['syarat_umur'] ?></td>
                     </tr>
-        
+
+                    <?php
+                    }
+                    ?>
+                    
                     </tbody>
                     </table>
             </div>
         </div>     
-
-
-
-
-
-
-
-
-          
-        <!-- Footer -->
-        <div id="page-content">
-          <div class="container text-center">
-            <div class="row justify-content-center">
-            </div>
-          </div>
-        </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-          <div class="container text-center">
-            <small>1301180154 - 1301181192 - 1301180072 - 1301180023 - 1301180211</small>
-            <br>
-            <small>Copyright &copy; PosyanQuy | Tubes WebPro 2020</small>
-          </div>
-        </footer>
     </body>
 </html>

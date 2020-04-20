@@ -22,29 +22,6 @@
     </head>
     <body>
 
-        <!-- nav -->     
-        <div class="container">
-        <div class="row"></div></div>
-        <nav class="navbar navbar-light bg-white fixed-top shadow p-3 mb-5 bg-white rounded" style="height: 100px;">
-            <a class="navbar-brand"><img src="asset/ic_local_hospital_48px.1.svg" alt="icon"><b>PosyanQuy | Article</b></a>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <a class="nav-link active" href="../home.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../imunisasi/imunisasi.html">Imunisasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="article.html">Article</a>
-                  </li>
-                <li class="nav-item">
-                  <a class="btn btn-primary" href="../login.html">Login</a>
-                </li>
-              </ul>
-        </nav>
-        </div>
-        </div>
-
         <!-- Content Article -->
         <br><br><br><br>
         <div class="tab-pane fade show active d-flex justify-content-center " style="margin-top: 50px;margin: 30px;margin-bottom: 150px;">
@@ -75,28 +52,12 @@
                 <a href="https://makassar.rakyatku.com/post/ini-alasan-mengapa-anak-harus-dibawah-ke-posyandu.html">Sumber</a>
                 
                 <br><br>
-                <center><a href="article.html" class="btn btn-light">Kembali</a></center>
+                <center><a href="<?php echo site_url('article')?>" class="btn btn-light">Kembali</a></center>
 
                 </div>
               </div>
  
           </ul>
         </div>
-                
-          
-        <!-- Footer -->
-        <div id="page-content">
-          <div class="container text-center">
-            <div class="row justify-content-center">
-            </div>
-          </div>
-        </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-          <div class="container text-center">
-            <small>1301180154 - 1301181192 - 1301180072 - 1301180023 - 1301180211</small>
-            <br>
-            <small>Copyright &copy; PosyanQuy | Tubes WebPro 2020</small>
-          </div>
-        </footer>
     </body>
 </html>
