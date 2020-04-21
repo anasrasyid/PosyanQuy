@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <!--icon bar title-->
-        <link rel="icon" href="asset/ic_local_hospital_48px.1.svg" type="image/icon type">
+        <link rel="icon" href="<?php echo base_url('assets/ic_local_hospital_48px.1.svg')?>" type="image/icon type">
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
