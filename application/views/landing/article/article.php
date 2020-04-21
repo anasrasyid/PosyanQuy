@@ -32,7 +32,7 @@
                 <div class="card-body flex-column d-flex">
                   <h5 class="card-title">Kenapa harus Imunisasi?</h5>
                   <p class="card-text">Imunisasi adalah hak dari seorang anak. Orangtua berkewajiban melakukannya agar tubuh si Kecil 'kuat' dari serangan sejumlah penyakit menular yang berbahaya.</p>
-                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article1')?>';">Lihat</button>
+                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article/1')?>';">Lihat</button>
                 </div>
               </div>
 
@@ -41,7 +41,7 @@
                 <div class="card-body flex-column d-flex">
                   <h5 class="card-title">Kegiatan Posyandu apa aja sih?</h5>
                   <p class="card-text">Kegiatan posyandu sangat besar peranannya bagi kesehatan masyarakat. pelaksanaan posyandu bakan hanya tanggung jawab pemerintah namun juga merupakan tanggung jawab setiap warga masyarakat.</p>
-                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article2')?>';">Lihat</button>
+                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article/2')?>';">Lihat</button>
                 </div>
               </div>
 
@@ -50,7 +50,7 @@
                 <div class="card-body flex-column d-flex">
                   <h5 class="card-title">Kenapa ikut posyandu itu penting?</h5>
                   <p class="card-text">Posyandu sangat penting untuk mencegah berbagai penyakit berat melalui vaksin. Vaksin tersebut lah yang dapat mencegah penyakit tersebut</p>
-                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article3')?>';">Lihat</button>
+                  <button type="button" class="btn btn-primary mt-auto" onclick="location.href = '<?php echo site_url('article/3')?>';">Lihat</button>
                 </div>
               </div>
   
