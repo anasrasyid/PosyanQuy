@@ -12,14 +12,18 @@ class Imunisasi extends CI_Controller {
         die('Ini imunisasi anak pada admin panel');
     }
     
+    public function get($id) {
+        return json_encode($this->imunisasi->get($id));
+    }
+    
     public function create() {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'syarat_umur' => ,
-                'deskripsi' => ,
-                'periode' => ,
-                'id_kader' => 
+                'nama' => $this->input->post('namaVaksin'),
+                'syarat_umur' => $this->input->post('syaratUmur'),
+                'deskripsi' => $this->input->post('deskripsiVaksin'),
+                'periode' => $this->input->post('periodeVaksi'),
+                'id_kader' => $this->input->post('idKader')
             ];
             if ($this->imunisasi->create($data)) {
                 redirect('admin');
@@ -32,10 +36,10 @@ class Imunisasi extends CI_Controller {
     public function update($id) {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'syarat_umur' => ,
-                'deskripsi' => ,
-                'periode' => 
+                'nama' => $this->input->post('namaVaksin'),
+                'syarat_umur' => $this->input->post('syaratUmur'),
+                'deskripsi' => $this->input->post('deskripsiVaksin'),
+                'periode' => $this->input->post('periodeVaksi')
             ];
             if ($this->imunisasi->update($id, $data)) {
                 redirect('admin');

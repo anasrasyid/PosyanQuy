@@ -13,13 +13,17 @@ class Ibu extends CI_Controller {
         die('Ini controller ibu pada admin panel');
     }
     
+    public function get($id) {
+        json_encode($this->ibu->get($id));
+    }
+    
     public function create() {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'alamat' => ,
-                'email' => ,
-                'password' => 
+                'nama' => $this->input->post('namaIbu'),
+                'alamat' => $this->input->post('alamatIbu'),
+                'email' => $this->input->post('emailIbu'),
+                'password' => $this->input->post('passwordIbu')
             ];
             if ($this->ibu->create($data)) {
                 redirect('admin');
@@ -32,10 +36,10 @@ class Ibu extends CI_Controller {
     public function update($id) {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'alamat' => ,
-                'email' => ,
-                'password' => 
+                'nama' => $this->input->post('namaIbu'),
+                'alamat' => $this->input->post('alamatIbu'),
+                'email' => $this->input->post('emailIbu'),
+                'password' => $this->input->post('passwordIbu')
             ];
             if ($this->ibu->update($id, $data)) {
                 redirect('admin');
