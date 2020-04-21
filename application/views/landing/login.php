@@ -37,7 +37,7 @@
 
                     <form>
                         <div class="form-group">
-                          <input type="idIbu" class="form-control" id="idIbu" aria-describedby="idIbu" placeholder="Masukan id ibu">
+                          <input type="idIbu" class="form-control" id="idIbu" aria-describedby="idIbu" placeholder="Masukan id">
                         </div>
 
                         <div class="form-group">
