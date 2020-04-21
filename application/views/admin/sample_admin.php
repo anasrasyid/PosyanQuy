@@ -71,8 +71,6 @@
         <a class="nav-link" id="v-pills-anak-tab" data-toggle="pill" href="#v-pills-anak" role="tab" aria-controls="v-pills-anak" aria-selected="false"><img src="<?= base_url('assets/child-solid.svg') ?>" style="height: 24px"> Anak</a>
         <a class="nav-link" id="v-pills-antrian-tab" data-toggle="pill" href="#v-pills-antrian" role="tab" aria-controls="v-pills-antrian" aria-selected="false"><img src="<?= base_url('assets/queue.svg') ?>" style="height: 24px"> Antrian</a>
 
-        <a class="nav-link" id="v-pills-article-tab" data-toggle="pill" href="#v-pills-article" role="tab" aria-controls="v-pills-article" aria-selected="false"><img src="<?= base_url('assets/article.svg') ?>" style="height: 24px"> Article</a>
-        
         <hr>
         <!-- LOGOUT -->
         <a class="nav-link" id="v-pills-logout-tab"  href="#logout"  aria-selected="false"><img src="<?= base_url('assets/log-out.svg') ?>" style="height: 24px">Logout</a>
@@ -105,10 +103,10 @@
           <li class="nav-item m-1">
             <div class="card" style="width: 36.5rem;">
               <div class="card-body">
-                <h5 class="card-title">Verifikasi Nomor Antrian</h5>
-                <p class="card-text">verifikasi nomor antrian ibu yang datang ke posyandu</p>
+                <h5 class="card-title">Create Imunisasi baru</h5>
+                <p class="card-text">Tambahkan Imunisasi pada database</p>
                 <br><Br>
-                <button class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#verifikasiAntrian" type="button">verifikasi</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#createImunisasi" type="button">Tambah</button>
               </div>
             </div>
           </li>
@@ -302,9 +300,6 @@
 
           </form>
 
-            <!--verifikasiAntrian-->
-            <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#verifikasiAntrian" type="button">verifikasi</button>
-
           </nav>
          
 
@@ -314,7 +309,6 @@
               <th scope="col">ID antrian</th>
               <th scope="col">Waktu</th>
               <th scope="col">ID ibu</th>
-              <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -325,20 +319,7 @@
               <th scope="row">1</th>
               <td>dd/mm/yyyy</td>
               <td>123</td>
-              <td>Belum Verifikasi</td>
               <td>
-                <button type="button" class="btn btn-warning" href="#modul verifikasi php" onClick="return confirm('Apakah Anda Yakin verifikasi ?')" >Verifikasi</button>
-                <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>dd/mm/yyyy</td>
-              <td>124</td>
-              <td>Sudah</td>
-              <td>
-                <button type="button" class="btn btn-warning" href="#modul verifikasi php" onClick="return confirm('Apakah Anda Yakin verifikasi?')" disabled>Verifikasi</button>
                 <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
@@ -347,14 +328,6 @@
           </table>
           </div>
 
-          <!--Content Atricle id='v-pills-article-tab'-->
-          <div class="tab-pane fade" id="v-pills-article" role="tabpanel" aria-labelledby="v-pills-article-tab">
-          <br>
-          <h1><img src="<?= base_url('assets/article.svg') ?>" style="height: 48px"> Article </h1>
-
-          </div>
-
-          <!-- end content show -->
         </div>
       </div>
     <!-- end nav -->
@@ -769,36 +742,5 @@
               </div>
             </div>
 
-  <!-- Antrian -->
-          <!-- verifikasiAntrian -->
-          <div class="modal fade" id="verifikasiAntrian" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Verifikasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                  
-                  <!-- form -->
-                  <form>
-                    <div class="formCreate">
-                      <label for="formGroupExampleInput">ID Antrian</label>
-                      <input type="text" class="form-control" id="idAntrian" placeholder="ID antrian" required>
-                    </div>
-                  </form>
-
-                  </div>
-
-                  <!-- button save modal -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
     </body>
 </html>
