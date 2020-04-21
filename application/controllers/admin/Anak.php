@@ -12,14 +12,18 @@ class Anak extends CI_Controller {
         die('Ini controller anak pada admin panel');
     }
     
+    public function get($id) {
+        return json_encode($this->anak->get($id));
+    }
+    
     public function create() {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'tempat_lahir' => ,
-                'tanggal_lahir' => ,
-                'berat_badan' => ,
-                'id_ibu' => 
+                'nama' => $this->input->post('namaAnak'),
+                'tempat_lahir' => $this->input->post('ttl'),
+                'tanggal_lahir' => $this->input->post('ttl'),
+                'berat_badan' => $this->input->post('bbAnak'),
+                'id_ibu' => $this->input->post('idIbu')
             ];
             if ($this->anak->create($data)) {
                 redirect('admin');
@@ -33,11 +37,11 @@ class Anak extends CI_Controller {
     public function update($id) {
         if ($this->input->method() === 'post') {
             $data = [
-                'nama' => ,
-                'tempat_lahir' => ,
-                'tanggal_lahir' => ,
-                'berat_badan' => ,
-                'id_ibu' => 
+                'nama' => $this->input->post('namaAnak'),
+                'tempat_lahir' => $this->input->post('ttl'),
+                'tanggal_lahir' => $this->input->post('ttl'),
+                'berat_badan' => $this->input->post('bbAnak'),
+                'id_ibu' => $this->input->post('idIbu')
             ];
             if ($this->anak->update($id, $data)) {
                 redirect('admin');
