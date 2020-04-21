@@ -7,22 +7,30 @@ class Member extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->view('user/header');
+    $this->load->model('Antrian_model');
   }
 
   public function index()
   {
+    $this->load->view('user/header');
     $this->load->view('user/profile-ibu.html');
   }
   
   public function daftarAntrian()
   {
+    $this->load->view('user/header');
     $this->load->view('user/form-antrian.html');
   }
 
-  public function pendaftaranAntrina()
+  public function pendaftaranAntrian()
   {
+    $this->load->view('user/header');
     $this->load->view('user/success-daftar.html');
+  }
+
+  public function get_antrian($date){
+    $day = $this->Antrian_model->get_today_antrian($date);
+    echo json_encode($day);
   }
 
 }

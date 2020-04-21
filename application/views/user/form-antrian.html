@@ -22,7 +22,7 @@
 <body>
 	<!-- Navbar -->
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">
 				<img src="brand.svg" alt="">
@@ -38,9 +38,9 @@
 				</div>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 
-	<!-- Akhir Navbar-->
+	<!-- Akhir Navbar -->
 
 	<div class="container">
 		<div class="row justify-content-center">
@@ -50,16 +50,16 @@
 						Form Pendaftaran Antrian
 					</div>
 					<div class="card-body">
-						<form action="success-daftar.html" method="">
+						<form action="<?php echo site_url('member/pendaftaranAntrian')?>" method="POST">
 							<div class="form-group pt-4">
 								<label for="anak">Nama anak:</label><br>
 								<select id="anak" name="anak" form="anakform">
-									<option value="#">jamet madura</option>
+									<option value="#" selected>jamet madura</option>
 								</select>
 							</div>
 							<div class="form-group pt-4">
 								<label>Pilih Tanggal Imunisasi</label><br>
-								<input type="date" class="tanggal">
+								<input type="date" class="tanggal" id="myDate">
 							</div>
 							<div class="form-group pt-4 pb-4">
 								<h3>Antrian yang sudah masuk hari ini : <span class="antrian">berapa</span></h3>
@@ -72,12 +72,15 @@
 			</div>
 		</div>
 	</div>
-
+	<script>
+		var today = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000)
+		myDate.min = today.toISOString().split("T")[0]
+	</script>
 	<script>
 		$(document).ready(function () {
 			$(".tanggal").change(function () {
 				$.ajax({
-					url: "posyanquy/get_antrian/" + $(this).val(),
+					url: "get_antrian/" + $(this).val(),
 					success: function (result) {
 						$(".antrian").html(result);
 					}
@@ -89,9 +92,7 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	</script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"> </Script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
 	</script>

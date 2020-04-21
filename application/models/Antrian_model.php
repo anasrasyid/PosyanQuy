@@ -26,6 +26,12 @@ class Antrian_model extends CI_Model {
 		$this->db->where('id',$id_antrian);
 		return $this->db->delete('antrian');
 	}
+
+		public function get_today_antrian($date){
+			$this->db->where('waktu',$date);
+			$this->db->from('antrian');
+			return $this->db->count_all_results();
+		}
     
     public function search() {
 		
