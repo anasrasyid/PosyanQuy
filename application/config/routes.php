@@ -57,5 +57,6 @@ $route['member'] = 'member/index';
 $route['member/(:any)'] = 'member/$1';
 $route['member/(:any)/(:any)'] = 'member/$1/$2';
 $route['(:any)'] = 'user/$1';
+$route['(:any)/(:any)'] = 'user/$1/$2';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

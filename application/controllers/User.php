@@ -29,23 +29,12 @@ class User extends CI_Controller {
         $this->load->view('landing/footer');
     }
     
-    public function article() {
-        $this->load->view('landing/article/article');
-        $this->load->view('landing/footer');
-    }
-
-    public function article1() {
-        $this->load->view('landing/article/article1');
-        $this->load->view('landing/footer');
-    }
-
-    public function article2() {
-        $this->load->view('landing/article/article2');
-        $this->load->view('landing/footer');
-    }
-
-    public function article3() {
-        $this->load->view('landing/article/article3');
+    public function article($id = 0) {
+        if ($id == 0) {
+            $this->load->view('landing/article/article');
+        } else {
+            $this->load->view('landing/article/article' . $id);
+        }
         $this->load->view('landing/footer');
     }
 }
