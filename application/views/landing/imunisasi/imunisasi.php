@@ -21,20 +21,20 @@
 
     </head>
     <body>
-
         <!-- Content informasi imunisasi -->
         <div class="container" style="margin-top: 150px;margin-bottom: 150px;">
             <h1 class="display-4 d-flex justify-content-center">Informasi Imunisasi PosyanQuy</h1>
             <p class="card-text d-flex justify-content-center">Quy! berikan imunisasi kepada anak tepat pada umur yang dianjurkan🤏</p>
-            <div class="container">
+            <br>
+            <div class="table-responsive-sm">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">NO</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Deskripsi</th>
-                        <th scope="col">Periode</th>
-                        <th scope="col">Syarat umur</th>
+                        <th scope="col"style="text-align: center">NO</th>
+                        <th scope="col"style="text-align: center">Nama</th>
+                        <th scope="col" style="width:55%">Deskripsi</th>
+                        <th scope="col"style="text-align: center">Periode</th>
+                        <th scope="col" style="text-align: center">Syarat umur (thn)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,8 +46,8 @@
                         <th scope="row"><?php echo ($i+1) ?></th>
                         <td><?php echo $imunisasi[$i]['nama'] ?></td>
                         <td><?php echo $imunisasi[$i]['Deskripsi'] ?></td>
-                        <td><?php echo $imunisasi[$i]['Periode'] ?></td>
-                        <td><?php echo $imunisasi[$i]['syarat_umur'] ?></td>
+                        <td style="text-align: center"><?php echo $imunisasi[$i]['Periode'] ?></td>
+                        <td style="text-align: center"><?php echo $imunisasi[$i]['syarat_umur'] ?></td>
                     </tr>
 
                     <?php
