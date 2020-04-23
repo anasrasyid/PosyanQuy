@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 17, 2020 at 09:02 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.1.33
+-- Host: localhost:3306
+-- Generation Time: Apr 23, 2020 at 05:57 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -118,8 +118,8 @@ CREATE TABLE `imunisasi` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `syarat_umur` int(11) NOT NULL,
-  `Deskripsi` text NOT NULL,
-  `Periode` int(11) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `periode` int(11) NOT NULL,
   `id_kader` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -127,7 +127,7 @@ CREATE TABLE `imunisasi` (
 -- Dumping data for table `imunisasi`
 --
 
-INSERT INTO `imunisasi` (`id`, `nama`, `syarat_umur`, `Deskripsi`, `Periode`, `id_kader`) VALUES
+INSERT INTO `imunisasi` (`id`, `nama`, `syarat_umur`, `deskripsi`, `periode`, `id_kader`) VALUES
 (4040, 'Hepatitis B', 3, 'Vaksin hepatitis B diberikan tiga kali. Yang pertama saat bayi baru lahir, paling lambat 12 jam setelah bayi lahir. Manfaatnya adalah untuk mencegah penularan hepatitis B dari ibu ke bayi saat proses persalinan. ', 3, 1301180023),
 (4041, 'Polio', 4, 'Polio dikenal juga dengan nama penyakit lumpuh layu. Penyakit menular ini disebabkan oleh virus dalam saluran pencernaan dan tenggorokan dan dapat mengakibatkan kelumpuhan kaki, tangan, maupun lumpuhnya otot pernafasan yang menyebabkan kematian. ', 4, 1301180072),
 (4042, 'BCG', 2, 'Vaksin BCG berfungsi untuk mencegah anak terkena kuman tuberculosis yang dapat menyerang paru-paru dan selaput otak dan dapat menyebabkan kecacatan bahkan kematian. ', 0, 1301180154),

@@ -28,8 +28,9 @@ class Member extends CI_Controller
     $this->load->view('user/success-daftar.html');
   }
 
-  public function get_antrian($date){
-    $day = $this->Antrian_model->get_today_antrian($date);
+  public function get_antrian($date) 
+  {
+    $day = $this->Antrian_model->get_count_by_date($date);
     echo json_encode($day);
   }
 

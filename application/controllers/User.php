@@ -24,8 +24,8 @@ class User extends CI_Controller {
     }
     
     public function imunisasi() {
-        $data['imunisasi'] = $this->Imunisasi_model->get_all_ims();
-        $this->load->view('landing/imunisasi/imunisasi',$data);
+        $data['imunisasi'] = $this->Imunisasi_model->get_all();
+        $this->load->view('landing/imunisasi/imunisasi', $data);
         $this->load->view('landing/footer');
     }
     

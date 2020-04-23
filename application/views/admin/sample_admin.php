@@ -147,22 +147,7 @@
             </tr>
           </thead>
           <tbody>
-
-          <!-- loop disini -->
-            <tr>
-              <th scope="row">1</th>
-              <td>Vaksin</td>
-              <td>1</td>
-              <td>qwehjasjdqwe</td>
-              <td>1</td>
-              <td">12301238</td>
-              <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" >Edit</button>
-                <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
-              </td>
-            </tr>
             
-            <!--
             <?php foreach ($imunisasi as $row) { ?>
             <tr>
               <th scope="row"><?= $row->id ?></th>
@@ -170,14 +155,13 @@
               <td><?= $row->syarat_umur ?></td>
               <td><?= $row->deskripsi ?></td>
               <td><?= $row->periode ?></td>
-              <tds><?= $row->id_kader ?></td>
+              <td><?= $row->id_kader ?></td>
               <td>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="updateImunisasi(<?= $row->id ?>)">Edit</button>
                 <button type="button" class="btn btn-danger" href="<?= site_url('admin/imunisasi/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
             <?php } ?>
-            -->
 
           </tbody>
           </table>
@@ -220,24 +204,7 @@
             </tr>
           </thead>
           <tbody>
-
-          <!-- loop disini -->
-            <tr>
-              <th scope="row">1</th>
-              <td>Jubaedah</td>
-              <td>Kp rambutan</td>
-              <td>mail</td>
-              <td>password@</td>
-              <td>
-                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" >Lihat</button>
-              </td>
-              <td>
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" >Edit</button>
-              <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
-              </td>
-            </tr>
             
-            <!--
             <?php foreach ($ibu as $row) { ?>
             <tr>
               <th scope="row"><?= $row->id ?></th>
@@ -254,18 +221,11 @@
               </td>
             </tr>
             <?php } ?>
-            -->
+            
 
           </tbody>
           </table>
           </div>
-
-          
-
-
-
-
-          
 
           <!--Content anak id='v-pills-anak-tab'-->
           <div class="tab-pane fade" id="v-pills-anak" role="tabpanel" aria-labelledby="v-pills-anak-tab">
@@ -301,23 +261,7 @@
             </tr>
           </thead>
           <tbody>
-
-          <!-- loop disini -->
-            <tr>
-              <th scope="row">1</th>
-              <th scope="col">annisa</th>
-              <th scope="col">Bandung</th>
-              <th scope="col">409123</th>
-              <th scope="col">4</th>
-              <th scope="col">4012</th>
-              <td><button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" >Lihat</button></td>
-              <td>
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" >Edit</button>
-              <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
-              </td>
-            </tr>
             
-            <!--
             <?php foreach ($anak as $row) { ?>
             <tr>
               <th scope="row"><?= $row->id ?></th>
@@ -335,7 +279,6 @@
               </td>
             </tr>
             <?php } ?>
-            -->
 
           </tbody>
           </table>
@@ -373,18 +316,7 @@
             </tr>
           </thead>
           <tbody>
-
-          <!-- loop disini -->
-            <tr>
-              <th scope="row">1</th>
-              <td>dd/mm/yyyy</td>
-              <td>123</td>
-              <td>
-                <button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
-              </td>
-            </tr>
             
-            <!--
             <?php foreach ($antrian as $row) { ?>
             <tr>
               <th scope="row"><?= $row->id ?></th>
@@ -395,7 +327,6 @@
               </td>
             </tr>
             <?php } ?>
-            -->
             
 
           </tbody>

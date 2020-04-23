@@ -3,21 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Antrian_model extends CI_Model {
 
-	public function get_antrian($id_antrian) {
+	public function get($id_antrian) {
 		$this->db->where('id',$id_antrian);
-		return $this->db->get('antrian')->row_array();
+		return $this->db->get('antrian')->row();
 	}
     
-    public function get_all_antrian() {
-		return $this->db->get('antrian')->result_array();
+    public function get_all() {
+		return $this->db->get('antrian')->result();
 	}
     
-    
-    public function create_antrian($data) {
+    public function get_count_by_date($date) {
+        $this->db->where('waktu', $date);
+        $this->db->from('antrian');
+        return $this->db->count_all_results();
+    }
+
+    public function create($data) {
 		return $this->db->insert('antrian',$data);
 	}
     
-    public function update_antrian($id_antrian,$data) {
+    public function update($id_antrian,$data) {
 		$this->db->where('id',$id_antrian);
 		return $this->db->update('antrian',$data);
 	}
@@ -26,12 +31,6 @@ class Antrian_model extends CI_Model {
 		$this->db->where('id',$id_antrian);
 		return $this->db->delete('antrian');
 	}
-
-		public function get_today_antrian($date){
-			$this->db->where('waktu',$date);
-			$this->db->from('antrian');
-			return $this->db->count_all_results();
-		}
     
     public function search() {
 		

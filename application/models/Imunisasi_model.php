@@ -3,21 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Imunisasi_model extends CI_Model {
 
-	public function get_ims($id_ims) {
+	public function get($id_ims) {
 		$this->db->where('id',$id_ims);
-		return $this->db->get('imunisasi')->row_array();
+		return $this->db->get('imunisasi')->row();
 	}
     
-    public function get_all_ims() {
-		return $this->db->get('imunisasi')->result_array();
+    public function get_all() {
+		return $this->db->get('imunisasi')->result();
 	}
     
     
-    public function create_ims($data) {
+    public function create($data) {
 		return $this->db->insert('imunisasi',$data);
 	}
     
-    public function update_ims($id_ims, $data) {
+    public function update($id_ims, $data) {
 		$this->db->where('id',$id_ims);
 		return $this->db->update('imunisasi',$data);
 	}

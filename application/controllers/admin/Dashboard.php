@@ -12,14 +12,14 @@ class Dashboard extends CI_Controller {
   	}
     
     public function index() {
-        // $data = [
-            // 'ibu' => $this->ibu->get_all(),
-            // 'anak' => $this->anak->get_all(),
-            // 'antrian' => $this->antrian->get_all(),
-            // 'imunisasi' => $this->imunisasi->get_all()
-        // ];
+        $data = [
+            'ibu' => $this->ibu->get_all(),
+            'anak' => $this->anak->get_all(),
+            'antrian' => $this->antrian->get_all(),
+            'imunisasi' => $this->imunisasi->get_all()
+        ];
         
-        // $this->load->view('admin/sample_admin', $data);
-        $this->load->view('admin/sample_admin');
+        $this->load->view('admin/sample_admin', $data);
+        // $this->load->view('admin/sample_admin');
     }
 }

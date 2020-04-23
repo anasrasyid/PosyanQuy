@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ibu_model extends CI_Model {
 
-	public function get_ibu($id_ibu) {
+	public function get($id_ibu) {
 		$this->db->where('id',$id_ibu);
-		return $this->db->get('ibu')->row_array();
+		return $this->db->get('ibu')->row();
 	}
     
-    public function get_all_ibu() {
-		return $this->db->get('ibu')->result_array();
+    public function get_all() {
+		return $this->db->get('ibu')->result();
 	}
     
     
