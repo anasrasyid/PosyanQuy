@@ -22,7 +22,7 @@ class Imunisasi extends CI_Controller {
                 'nama' => $this->input->post('namaVaksin'),
                 'syarat_umur' => $this->input->post('syaratUmur'),
                 'deskripsi' => $this->input->post('deskripsiVaksin'),
-                'periode' => $this->input->post('periodeVaksi'),
+                'periode' => $this->input->post('periodeVaksin'),
                 'id_kader' => $this->input->post('idKader')
             ];
             if ($this->imunisasi->create($data)) {
@@ -39,7 +39,7 @@ class Imunisasi extends CI_Controller {
                 'nama' => $this->input->post('namaVaksin'),
                 'syarat_umur' => $this->input->post('syaratUmur'),
                 'deskripsi' => $this->input->post('deskripsiVaksin'),
-                'periode' => $this->input->post('periodeVaksi')
+                'periode' => $this->input->post('periodeVaksin')
             ];
             if ($this->imunisasi->update($id, $data)) {
                 redirect('admin');

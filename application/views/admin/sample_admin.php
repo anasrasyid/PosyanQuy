@@ -355,7 +355,7 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form>
+                  <form id="formCreateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
                       <input type="text" class="form-control" name="namaVaksin" id="namaVaksin" placeholder="Nama Imunisasi" required>
@@ -380,11 +380,11 @@
                   </form>
 
                   </div>
-                  <!-- Seinget aing button submitnya harus didalam form ya gan -->
+
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formCreateImunisasi" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
@@ -455,7 +455,7 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form>
+                  <form id="formCreateIbu" method="POST" action="<?= site_url('admin/ibu/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama Ibu</label>
                       <input type="text" class="form-control" name="namaIbu" id="namaIbu" placeholder="Nama Ibu" required>
@@ -493,7 +493,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formCreateIbu" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
@@ -642,10 +642,10 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+                  
                   
                   <!-- form -->
-                  <form>
+                  <form id="formCreateAnak" method="POST" action="<?= site_url('admin/anak/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
                       <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
@@ -669,7 +669,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formCreateAnak" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>

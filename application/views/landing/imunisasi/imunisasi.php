@@ -40,19 +40,17 @@
                     <tbody>
         
                     <!-- loop disini -->
-                    <?php for ($i=0; $i < count($imunisasi); $i++) { ?>
+                    <?php $i = 0; foreach ($imunisasi as $row) { ?>
                     
                     <tr>
-                        <th scope="row"><?php echo ($i+1) ?></th>
-                        <td><?php echo $imunisasi[$i]['nama'] ?></td>
-                        <td><?php echo $imunisasi[$i]['Deskripsi'] ?></td>
-                        <td style="text-align: center"><?php echo $imunisasi[$i]['Periode'] ?></td>
-                        <td style="text-align: center"><?php echo $imunisasi[$i]['syarat_umur'] ?></td>
+                        <th scope="row"><?= $i++ ?></th>
+                        <td><?= $row->nama ?></td>
+                        <td><?= $row->deskripsi ?></td>
+                        <td style="text-align: center"><?= $row->periode ?></td>
+                        <td style="text-align: center"><?= $row->syarat_umur ?></td>
                     </tr>
 
-                    <?php
-                    }
-                    ?>
+                    <?php } ?>
                     
                     </tbody>
                     </table>
