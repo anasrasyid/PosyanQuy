@@ -32,7 +32,9 @@ class Antrian_model extends CI_Model {
 		return $this->db->delete('antrian');
 	}
     
-    public function search() {
-		
+    public function search($keyword) {
+	$keyword = $this->input->post('keyword', true);
+        $this->db->or_like(['waktu' => $keyword]);
+        return $this->db->get('antrian')->result_array();
 	}
 }
