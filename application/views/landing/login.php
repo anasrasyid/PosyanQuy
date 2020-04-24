@@ -35,13 +35,13 @@
                     <h4>Welcome Bunda</h4>
                     <p>Login untuk melihat perkembangan balita</p>
 
-                    <form>
+                    <form action="<?php echo site_url('login')?>" method="POST">
                         <div class="form-group">
-                          <input type="idIbu" class="form-control" id="idIbu" aria-describedby="idIbu" placeholder="Masukan id">
+                          <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Masukan email">
                         </div>
 
                         <div class="form-group">
-                          <input type="password" class="form-control" id="password" placeholder="Password">
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                         
                         <div class="form-group">

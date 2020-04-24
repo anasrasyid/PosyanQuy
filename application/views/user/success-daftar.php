@@ -53,10 +53,10 @@
                     </div>
                     <div class="card-body">
                         <h4 class="text-center text-success">Sukses Mendaftar Antrian</h4>
-                        <h5 class="pt-4 text-center">Nomor Antrian anda : <span>nomor antrian</span></h5>
-                        <p class="pt-3">Nama Ibu : <span>nama ibu</span></p>
-                        <p>Nama Anak : <span>namaanak</span></p>
-                        <p>Tanngal Imunisasi : <span>tanggal</span></p>
+                        <h5 class="pt-4 text-center">Nomor Antrian anda : <span><?php echo $nomor ?></span></h5>
+                        <p class="pt-3">Nama Ibu : <span><?php echo $nama_ibu ?></span></p>
+                        <p>Nama Anak : <span><?php echo $nama_anak ?></span></p>
+                        <p>Tanngal Imunisasi : <span><?php echo $tanggal ?></span></p>
                         <h4 class="text-center">Silahkan Ingat nomor antrian anda atau foto layar anda</h4>
                     </div>
                 </div>

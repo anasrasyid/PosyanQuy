@@ -43,7 +43,7 @@
                     <?php $i = 0; foreach ($imunisasi as $row) { ?>
                     
                     <tr>
-                        <th scope="row"><?= $i++ ?></th>
+                        <th scope="row"><?= ++$i ?></th>
                         <td><?= $row->nama ?></td>
                         <td><?= $row->deskripsi ?></td>
                         <td style="text-align: center"><?= $row->periode ?></td>
