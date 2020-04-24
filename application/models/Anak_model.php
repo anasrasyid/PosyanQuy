@@ -31,7 +31,9 @@ class Anak_model extends CI_Model {
         return $this->db->delete('anak');
     }
     
-    public function search() {
-		
+    public function search($keyword) {
+	$keyword = $this->input->post('keyword', true);
+        $this->db->or_like(['nama' => $keyword, 'tempat_lahir' => $keyword, 'tanggal_lahir' => $keyword, 'berat_badan' => $keyword, 'id_ibu' => $keyword]);
+        return $this->db->get('anak')->result_array();
     }
 }
