@@ -50,10 +50,10 @@
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  
+    <script src="<?= base_url('assets/admin.js') ?>"></script>
     <title>Admin Panel | Dashboard</title>
 
   </head>
@@ -157,7 +157,7 @@
               <td><?= $row->periode ?></td>
               <td><?= $row->id_kader ?></td>
               <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="updateImunisasi(<?= $row->id ?>)">Edit</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(<?= $row->id ?>)">Edit</button>
                 <button type="button" class="btn btn-danger" href="<?= site_url('admin/imunisasi/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
@@ -213,10 +213,10 @@
               <td><?= $row->email ?></td>
               <td><?= $row->password ?></td>
               <td>
-                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="lihatAnak(<?= $row->id ?>)">Lihat</button>
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="getAnakByIbu(<?= $row->id ?>)">Lihat</button>
               </td>
               <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="updateIbu(<?= $row->id ?>)">Edit</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(<?= $row->id ?>)">Edit</button>
                 <button type="button" class="btn btn-danger" href="<?= site_url('admin/ibu/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
@@ -271,10 +271,10 @@
               <td><?= $row->berat_badan ?></td>
               <td><?= $row->id_ibu ?></td>
               <td>
-                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="historyVaksin(<?= $row->id ?>)">Lihat</button>
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(<?= $row->id ?>)">Lihat</button>
               </td>
               <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="updateIbu(<?= $row->id ?>)">Edit</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(<?= $row->id ?>)">Edit</button>
                 <button type="button" class="btn btn-danger" href="<?= site_url('admin/anak/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
@@ -404,7 +404,8 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form>
+                  <form id="formUpdateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/update') ?>">
+                    <input type="hidden" id="idVaksin" name="idVaksin">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
                       <input type="text" class="form-control" name="namaVaksin" id="namaVaksin" placeholder="Nama Imunisasi" required>
@@ -429,11 +430,11 @@
                   </form>
 
                   </div>
-                  <!-- Seinget aing button submitnya harus didalam form ya gan -->
+
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formUpdateImunisasi" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
@@ -513,15 +514,15 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form>
-
+                  <form id="formUpdateIbu" method="POST" action="<?= site_url('admin/ibu/update') ?>">
+                    <input type="hidden" id="idIbu" name="idIbu">
                     <div class="form-group">
                       <label for="formGroupExampleInput">Nama</label> 
-                      <input type="text" class="form-control" name="namaIbu" id="namaIbu" placeholder="Nama Ibu" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" name="namaIbu" id="namaIbu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Alamat</label>
-                      <textarea type="text" class="form-control" name="alamatIbu" id="alamatIbu" placeholder="alamat" required value="<!-- php echo alamat -->"></textarea>
+                      <textarea type="text" class="form-control" name="alamatIbu" id="alamatIbu" placeholder="alamat" required></textarea>
                     </div>
 
                   </form>
@@ -531,7 +532,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formUpdateIbu" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
@@ -561,13 +562,14 @@
                   </thead>
                   <tbody>
 
-                  <!-- loop disini -->
+                  <!-- loop disini
                     <tr>
                       <th scope="row">1</th>
                       <td>Annisa</td>
                       <td>14/4/2020</td>
                       <td>14</td>
                     </tr>
+                  -->
 
                   </tbody>
                   </table>
@@ -609,13 +611,14 @@
                   </thead>
                   <tbody>
 
-                  <!-- loop disini -->
+                  <!-- loop disini
                     <tr>
                       <th scope="row">1</th>
                       <td>dd/mm/yyyy</td>
                       <td>hepatitis B</td>
                       <td><button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button></td>
                     </tr>
+                  -->
 
                   </tbody>
                   </table>
@@ -689,22 +692,22 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form>
+                  <form id="formUpdateAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
                     <div class="form-group">
                       <label for="formGroupExampleInput">Nama</label> 
-                      <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Berat Badan (kg)</label>
-                      <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required value="<!-- php echo nama -->">
+                      <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required value="<!-- php echo nama -->">
+                      <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id ibu" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id ibu" required>
                     </div>
 
                     <br>

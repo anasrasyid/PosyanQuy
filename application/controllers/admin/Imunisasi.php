@@ -13,7 +13,8 @@ class Imunisasi extends CI_Controller {
     }
     
     public function get($id) {
-        return json_encode($this->imunisasi->get($id));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->imunisasi->get($id)));
     }
     
     public function create() {
@@ -33,8 +34,9 @@ class Imunisasi extends CI_Controller {
         }
     }
     
-    public function update($id) {
+    public function update() {
         if ($this->input->method() === 'post') {
+            $id = $this->input->post('id');
             $data = [
                 'nama' => $this->input->post('namaVaksin'),
                 'syarat_umur' => $this->input->post('syaratUmur'),
@@ -58,6 +60,7 @@ class Imunisasi extends CI_Controller {
     }
     
     public function search($keyword) {  
-        return json_encode($this->imunisasi->search($keyword));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->imunisasi->search($keyword)));
     }
 }

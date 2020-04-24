@@ -6,6 +6,7 @@ class Anak extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('anak_model', 'anak');
+        $this->load->model('history_model', 'history');
   	}
     
     public function index() {
@@ -13,7 +14,8 @@ class Anak extends CI_Controller {
     }
     
     public function get($id) {
-        return json_encode($this->anak->get($id));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->anak->get($id)));
     }
     
     public function create() {
@@ -34,8 +36,9 @@ class Anak extends CI_Controller {
         }
     }
     
-    public function update($id) {
+    public function update() {
         if ($this->input->method() === 'post') {
+            $id = $this->input->post('idAnak');
             $data = [
                 'nama' => $this->input->post('namaAnak'),
                 'tempat_lahir' => $this->input->post('ttl'),
@@ -59,12 +62,13 @@ class Anak extends CI_Controller {
         }
     }
     
-    //hasilnya json
     public function search($keyword) {  
-        return json_encode($this->anak->search($keyword));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->anak->search($keyword)));
     }
     
     public function history_vaksin($id) {
-        return json_encode($this->anak->search($keyword));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->history->get_by_anak($id)));
     }
 }

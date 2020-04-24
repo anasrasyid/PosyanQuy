@@ -13,7 +13,8 @@ class Imunisasi extends CI_Controller {
     }
     
     public function get($id) {
-        return json_encode($this->antrian->get($id));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->antrian->get($id)));
     }
     
     /*
@@ -42,6 +43,7 @@ class Imunisasi extends CI_Controller {
     }
     
     public function search($keyword) {
-        return json_encode($this->antrian->search($keyword));
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode($this->antrian->search($keyword)));
     }
 }
