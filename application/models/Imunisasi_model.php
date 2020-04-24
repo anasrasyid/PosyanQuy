@@ -28,7 +28,9 @@ class Imunisasi_model extends CI_Model {
 	}
     
     
-    public function search() {
-		
+    public function search($keyword) {
+	$keyword = $this->input->post('keyword', true);
+        $this->db->or_like(['nama' => $keyword]);
+        return $this->db->get('imunisasi')->result_array();
 	}
 }
