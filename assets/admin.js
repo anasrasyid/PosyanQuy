@@ -44,6 +44,7 @@ $(function() {
             $('#formUpdateAnak #namaAnak').val(data['nama']);
             $('#formUpdateAnak #bbAnak').val(data['berat_badan']);
             $('#formUpdateAnak #ttl').val(data['tanggal_lahir']);
+            $('#formUpdateAnak #ttl1').val(data['tempat_lahir']);
             $('#formUpdateAnak #idIbu').val(data['id_ibu']);
         });
     };

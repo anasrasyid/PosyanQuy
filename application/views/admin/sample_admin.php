@@ -18,7 +18,7 @@
   Data Antrian    = (idAntrian)
   Modal Imunisasi = (createImunisasi,updateImunisasi)
   Modal Ibu       = (createIbu,updateIbu)
-  Modal Anak      = (createIbu,updateIbu)
+  Modal Anak      = (createAnak,updateAnak)
   Modal Antrian   = (createAntrian,verifikasiAntrian)
   v-pills-imunisasi
   v-pills-ibu
@@ -124,7 +124,10 @@
           <h1><img src="<?= base_url('assets/pill.svg') ?>" style="height: 48px">Imunisasi</h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
+          
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/search/{keyword} -->
+          <script src='<?php echo base_url(); ?>admin/imunisasi/search/{keyword}' type='text/javascript' ></script>
+
           <form id="formSearchImunisasi" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <!-- searchImunisasi -->
@@ -158,7 +161,7 @@
               <td><?= $row->id_kader ?></td>
               <td>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(<?= $row->id ?>)">Edit</button>
-                <button type="button" class="btn btn-danger" href="<?= site_url('admin/imunisasi/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                <a type="button" class="btn btn-danger" href="<?= site_url('admin/imunisasi/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
               </td>
             </tr>
             <?php } ?>
@@ -178,6 +181,8 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/ibu/search/{keyword} -->
+          <script src='<?php echo base_url(); ?>admin/ibu/search/{keyword}' type='text/javascript' ></script>
+
           <form id="formSearchIbu" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
@@ -217,7 +222,7 @@
               </td>
               <td>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(<?= $row->id ?>)">Edit</button>
-                <button type="button" class="btn btn-danger" href="<?= site_url('admin/ibu/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                <a type="button" class="btn btn-danger" href="<?= site_url('admin/ibu/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
               </td>
             </tr>
             <?php } ?>
@@ -234,6 +239,8 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/anak/search/{keyword} -->
+          <script src='<?php echo base_url(); ?>admin/anak/search/{keyword}' type='text/javascript' ></script>
+
           <form id="formSearchAnak" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
@@ -274,8 +281,22 @@
                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(<?= $row->id ?>)">Lihat</button>
               </td>
               <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(<?= $row->id ?>)">Edit</button>
-                <button type="button" class="btn btn-danger" href="<?= site_url('admin/anak/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+
+                <!-- UPDATE VAKSIN -->
+                <div class="card-body flex-column d-flex">
+                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="">Update Vaksin</button>
+                </div>
+
+                <!-- UPDATE DATA ANAK -->
+                <div class="card-body flex-column d-flex">
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(<?= $row->id ?>)">Edit</button>
+                </div>
+
+                <!-- DELETE -->
+                <div class="card-body flex-column d-flex">
+                  <a type="button" class="btn btn-danger" href="<?= site_url('admin/anak/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                </div>
+
               </td>
             </tr>
             <?php } ?>
@@ -295,6 +316,8 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/antrian/{keyword} -->
+          <script src='<?php echo base_url(); ?>admin/imunisasi/antrian/{keyword}' type='text/javascript' ></script>
+
           <form id="formSearchAntrian" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="date" placeholder="Search" aria-label="Search">
             
@@ -323,7 +346,7 @@
               <td><?= $row->waktu ?></td>
               <td><?= $row->id_ibu ?></td>
               <td>
-                <button type="button" class="btn btn-danger" href="<?= site_url('admin/antrian/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                <a type="button" class="btn btn-danger" href="<?= site_url('admin/antrian/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
               </td>
             </tr>
             <?php } ?>
@@ -374,7 +397,7 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
-                      <input type="date" class="form-control" name="idKader" id="idKader" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="idKader" id="idKader" placeholder="13011xxxxx" required>
                     </div>
 
                   </form>
@@ -424,7 +447,7 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
-                      <input type="date" class="form-control" name="idKader" id="idKader" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="idKader" id="idKader" placeholder="13011xxxxx" required>
                     </div>
 
                   </form>
@@ -465,28 +488,15 @@
                       <label for="formGroupExampleInput2">Alamat</label>
                       <textarea type="text" class="form-control" name="alamatIbu" id="alamatIbu" placeholder="alamat" required></textarea>
                     </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Email</label>
+                      <input type="email" class="form-control" name="emailIbu" id="emailIbu" placeholder="ibu@email.com" required></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Password</label>
+                      <input type="password" class="form-control" name="passwordIbu" id="passwordIbu" placeholder="password" required></input>
+                    </div>
 
-                    <br>
-                    <h5 class="modal-title" id="exampleModalLabel">Form Anak</h5>
-                    <br>
-
-                    <div class="formCreate">
-                      <label for="formGroupExampleInput">Nama Anak</label>
-                      <input type="text" class="form-control" id="namaAnak" placeholder="Nama Anak" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Berat Badan (kg) </label>
-                      <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" disabled value="<!-- php id ibu++-->">
-                    </div>
-                
                   </form>
 
                   </div>
@@ -588,6 +598,53 @@
 
 
   <!-- Anak -->
+        <!-- MODAL #updateVaksinAnak-->
+        <div class="modal fade" id="updateVaksinAnak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Vaksin Anak | Create History vaksin </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  
+                  <!-- form -->
+                  <form id="formUpdateVaksinAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
+
+                    <!-- loop data vaksin yang belum -->
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Nama Vaksin</label>
+                        <select class="form-control" id="selectVaksin">
+
+                          <!-- loop daftar list -->
+                          <?php foreach ($imunisasi as $row) { ?>
+                            <option><?= $row->nama ?></option>
+                          <?php }?>
+
+                        </select>
+                      </div>
+                    
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Tanggal</label> 
+                      <input type="date" class="form-control" name="tanggalHistory" id="tanggalHistory" placeholder="Tanggal" required>
+                    </div>
+
+
+                  </form>
+                  </div>
+
+                  <!-- button save modal -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           <!-- Modal historyVaksin-->
           <div class="modal fade" id="historyVaksin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -640,12 +697,12 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Anak</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form Ibu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  
+                  <div class="modal-body">
                   
                   <!-- form -->
                   <form id="formCreateAnak" method="POST" action="<?= site_url('admin/anak/create') ?>">
@@ -662,6 +719,10 @@
                       <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
+                      <label for="formGroupExampleInput2">Tempat Lahir</label>
+                      <input type="text" class="form-control" name="ttl1" id="ttl1" placeholder="Nama Kota" required>
+                    </div>
+                    <div class="form-group">
                       <label for="formGroupExampleInput2">ID ibu</label>
                       <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
                     </div>
@@ -672,7 +733,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="formCreateAnak" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formCreateIbu" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
@@ -694,12 +755,12 @@
                   <!-- form -->
                   <form id="formUpdateAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
                     <input type="hidden" id="idAnak" name="idAnak">
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">Nama</label> 
+                    <div class="formCreate">
+                      <label for="formGroupExampleInput">Nama</label>
                       <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput2">Berat Badan (kg)</label>
+                      <label for="formGroupExampleInput2">Berat Badan (kg) </label>
                       <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required>
                     </div>
                     <div class="form-group">
@@ -707,34 +768,12 @@
                       <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
+                      <label for="formGroupExampleInput2">Tempat Lahir</label>
+                      <input type="text" class="form-control" name="ttl1" id="ttl1" placeholder="Nama Kota" required>
+                    </div>
+                    <div class="form-group">
                       <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id ibu" required>
-                    </div>
-
-                    <br>
-                    <h5 class="modal-title" id="exampleModalLabel">Update pemberian Vaksin</h5>
-                    <br>
-
-                    <!-- loop data vaksin yang belum -->
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Nama Vaksin</label>
-                        <select class="form-control" id="selectVaksin">
-                          <!-- loop daftar list -->
-                          <option>vaksin 1</option>
-                          <option>vaksin 2</option>
-                          <option>vaksin 3</option>
-                          <option>vaksin 4</option>
-                          <option>vaksin 5</option>
-                        </select>
-                      </div>
-                    
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">Tanggal pemberian Vaksin</label> 
-                      <input type="date" class="form-control" name="tglVaksin" id="tglVaksin" placeholder="Nama Vaksin" required value="<!-- php echo nama -->">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">ID antrian</label> 
-                      <input type="text" class="form-control" name="idAntrian" id="idAntrian" placeholder="Nama Vaksin" required value="<!-- php echo nama -->">
+                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
                     </div>
 
                   </form>

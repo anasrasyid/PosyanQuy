@@ -22,7 +22,7 @@ class Anak extends CI_Controller {
         if ($this->input->method() === 'post') {
             $data = [
                 'nama' => $this->input->post('namaAnak'),
-                'tempat_lahir' => $this->input->post('ttl'),
+                'tempat_lahir' => $this->input->post('ttl1'),
                 'tanggal_lahir' => $this->input->post('ttl'),
                 'berat_badan' => $this->input->post('bbAnak'),
                 'id_ibu' => $this->input->post('idIbu')
@@ -41,7 +41,7 @@ class Anak extends CI_Controller {
             $id = $this->input->post('idAnak');
             $data = [
                 'nama' => $this->input->post('namaAnak'),
-                'tempat_lahir' => $this->input->post('ttl'),
+                'tempat_lahir' => $this->input->post('ttl1'),
                 'tanggal_lahir' => $this->input->post('ttl'),
                 'berat_badan' => $this->input->post('bbAnak'),
                 'id_ibu' => $this->input->post('idIbu')
