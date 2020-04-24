@@ -27,7 +27,7 @@ class Ibu extends CI_Controller {
                 'password' => $this->input->post('passwordIbu')
             ];
             if ($this->ibu->create($data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -44,7 +44,7 @@ class Ibu extends CI_Controller {
                 // 'password' => $this->input->post('passwordIbu')
             ];
             if ($this->ibu->update($id, $data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -53,13 +53,13 @@ class Ibu extends CI_Controller {
     
     public function delete($id) {
         if ($this->ibu->delete($id)) {
-            redirect('admin');
+            redirect('admin/');
         } else {
             die('gagal anjing');
         }
     }
     
-    public function search($keyword) {
+    public function search($keyword = '') {
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($this->ibu->search($keyword)));
     }

@@ -2,7 +2,7 @@ $(function() {
     //FUNGSI SEARCH BELOM, ARGH DEADLINE
     
     window.getImunisasi = (id) => {
-        $.getJSON('admin/imunisasi/get/' + id, (data) => {
+        $.getJSON('imunisasi/get/' + id, (data) => {
             $('#formUpdateImunisasi #idVaksin').val(data['id']);
             $('#formUpdateImunisasi #namaVaksin').val(data['nama']);
             $('#formUpdateImunisasi #deskripsiVaksin').text(data['deskripsi']);
@@ -13,7 +13,7 @@ $(function() {
     };
     
     window.getAnakByIbu = (id) => {
-        $.getJSON('admin/ibu/list_anak/' + id, (data) => {
+        $.getJSON('ibu/list_anak/' + id, (data) => {
             $('#lihatAnak tbody').html('');
             var i = 1;
             for (var row of data) {
@@ -31,7 +31,7 @@ $(function() {
     };
     
     window.getIbu = (id) => {
-        $.getJSON('admin/ibu/get/' + id, (data) => {
+        $.getJSON('ibu/get/' + id, (data) => {
             $('#formUpdateIbu #idIbu').val(data['id']);
             $('#formUpdateIbu #namaIbu').val(data['nama']);
             $('#formUpdateIbu #alamatIbu').text(data['alamat']);
@@ -39,7 +39,7 @@ $(function() {
     };
     
     window.getAnak = (id) => {
-        $.getJSON('admin/anak/get/' + id, (data) => {
+        $.getJSON('anak/get/' + id, (data) => {
             $('#formUpdateAnak #idAnak').val(data['id']);
             $('#formUpdateAnak #namaAnak').val(data['nama']);
             $('#formUpdateAnak #bbAnak').val(data['berat_badan']);
@@ -50,7 +50,7 @@ $(function() {
     };
     
     window.getHistoryVaksinByAnak = (id) => {
-        $.getJSON('admin/anak/history_vaksin/' + id, (data) => {
+        $.getJSON('anak/history_vaksin/' + id, (data) => {
             $('#historyVaksin tbody').html('');
             for (var row of data) {
                 $('#historyVaksin tbody').append(`
@@ -67,7 +67,7 @@ $(function() {
 
     window.searchImunisasi = () => {
         var keyword = $('#formSearchImunisasi #keyword').val();
-        $.getJSON('admin/imunisasi/search/' + keyword, (data) => {
+        $.getJSON('imunisasi/search/' + keyword, (data) => {
             $('#v-pills-imunisasi tbody').html('');
             for (var row of data) {
                 $('#v-pills-imunisasi tbody').append(`
@@ -80,7 +80,7 @@ $(function() {
                   <td>${row['id_kader']}</td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="admin/imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <button type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
                   </td>
                 </tr>
                 `);
@@ -90,7 +90,7 @@ $(function() {
     
     window.searchIbu = () => {
         var keyword = $('#formSearchIbu #keyword').val();
-        $.getJSON('admin/ibu/search/' + keyword, (data) => {
+        $.getJSON('ibu/search/' + keyword, (data) => {
             $('#v-pills-ibu tbody').html('');
             for (var row of data) {
                 $('#v-pills-ibu tbody').append(`
@@ -105,7 +105,7 @@ $(function() {
                   </td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="admin/ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <button type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
                   </td>
                 </tr>
                 `);
@@ -115,7 +115,7 @@ $(function() {
 
     window.searchAnak = () => {
         var keyword = $('#formSearchAnak #keyword').val();
-        $.getJSON('admin/anak/search/' + keyword, (data) => {
+        $.getJSON('anak/search/' + keyword, (data) => {
             $('#v-pills-anak tbody').html('');
             for (var row of data) {
                 $('#v-pills-anak tbody').append(`
@@ -131,7 +131,7 @@ $(function() {
                   </td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="admin/anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <button type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
                   </td>
                 </tr>
                 `);
@@ -141,7 +141,7 @@ $(function() {
 
     window.searchAntrian = () => {
         var keyword = $('#formSearchAntrian #keyword').val();
-        $.getJSON('admin/antrian/search/' + keyword, (data) => {
+        $.getJSON('antrian/search/' + keyword, (data) => {
             $('#v-pills-antrian tbody').html('');
             for (var row of data) {
                 $('#v-pills-antrian tbody').append(`
@@ -150,7 +150,7 @@ $(function() {
                   <td>${row['waktu']}</td>
                   <td>${row['id_ibu']}</td>
                   <td>
-                    <button type="button" class="btn btn-danger" href="admin/antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <button type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
                   </td>
                 </tr>
                 `);

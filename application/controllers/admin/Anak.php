@@ -28,7 +28,7 @@ class Anak extends CI_Controller {
                 'id_ibu' => $this->input->post('idIbu')
             ];
             if ($this->anak->create($data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -47,7 +47,7 @@ class Anak extends CI_Controller {
                 'id_ibu' => $this->input->post('idIbu')
             ];
             if ($this->anak->update($id, $data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -56,13 +56,13 @@ class Anak extends CI_Controller {
     
     public function delete($id) {
         if ($this->anak->delete($id)) {
-            redirect('admin');
+            redirect('admin/');
         } else {
             die('gagal anjing');
         }
     }
     
-    public function search($keyword) {  
+    public function search($keyword = '') {  
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($this->anak->search($keyword)));
     }

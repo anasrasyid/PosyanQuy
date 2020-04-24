@@ -32,7 +32,6 @@ class History_model extends CI_Model {
     }
       
     public function search($keyword) {
-        $keyword = $this->input->post('keyword', true);
         $this->db->or_like(['tanggal' => $keyword]);
         return $this->db->get('history')->result_array();
     }

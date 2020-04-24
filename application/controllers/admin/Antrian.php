@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Imunisasi extends CI_Controller {
+class Antrian extends CI_Controller {
     
 	public function __construct() {
         parent::__construct();
@@ -26,7 +26,7 @@ class Imunisasi extends CI_Controller {
                 'id_anak' => $this->input->post('')
             ];
             if ($this->antrian->create($data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -36,13 +36,13 @@ class Imunisasi extends CI_Controller {
     
     public function delete($id) {
         if ($this->antrian->delete($id)) {
-            redirect('admin');
+            redirect('admin/');
         } else {
             die('gagal anjing');
         }
     }
     
-    public function search($keyword) {
+    public function search($keyword = '') {
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($this->antrian->search($keyword)));
     }

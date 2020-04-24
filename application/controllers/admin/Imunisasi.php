@@ -27,7 +27,7 @@ class Imunisasi extends CI_Controller {
                 'id_kader' => $this->input->post('idKader')
             ];
             if ($this->imunisasi->create($data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -44,7 +44,7 @@ class Imunisasi extends CI_Controller {
                 'periode' => $this->input->post('periodeVaksin')
             ];
             if ($this->imunisasi->update($id, $data)) {
-                redirect('admin');
+                redirect('admin/');
             } else {
                 die('gagal anjing');
             }
@@ -53,13 +53,13 @@ class Imunisasi extends CI_Controller {
     
     public function delete($id) {
         if ($this->imunisasi->delete($id)) {
-            redirect('admin');
+            redirect('admin/');
         } else {
             die('gagal anjing');
         }
     }
     
-    public function search($keyword) {  
+    public function search($keyword = '') {  
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($this->imunisasi->search($keyword)));
     }

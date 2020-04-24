@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller {
             'imunisasi' => $this->imunisasi->get_all()
         ];
         
-        $this->load->view('admin/sample_admin', $data);
+        $this->load->view('admin/admin', $data);
         // $this->load->view('admin/sample_admin');
     }
 }

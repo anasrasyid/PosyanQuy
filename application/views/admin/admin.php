@@ -124,14 +124,11 @@
           <h1><img src="<?= base_url('assets/pill.svg') ?>" style="height: 48px">Imunisasi</h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
-          
-          <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/search/{keyword} -->
-          <script src='<?php echo base_url(); ?>admin/imunisasi/search/{keyword}' type='text/javascript' ></script>
 
           <form id="formSearchImunisasi" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <!-- searchImunisasi -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchImunisasi()" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchImunisasi()" type="button">Search</button>
           </form>
             <!--createImunisasi-->
             <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#createImunisasi" type="button">Tambah</button>
@@ -180,14 +177,12 @@
           <h1><img src="<?= base_url('assets/woman.svg') ?>" style="height: 48px">Ibu </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
-          <!-- Load Ajax ya gan, call ke URL posyanquy/admin/ibu/search/{keyword} -->
-          <script src='<?php echo base_url(); ?>admin/ibu/search/{keyword}' type='text/javascript' ></script>
 
           <form id="formSearchIbu" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchIbu()" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchIbu()" type="button">Search</button>
 
           </form>
 
@@ -238,14 +233,12 @@
           <h1><img src="<?= base_url('assets/child-solid.svg') ?>" style="height: 48px">Anak </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
-          <!-- Load Ajax ya gan, call ke URL posyanquy/admin/anak/search/{keyword} -->
-          <script src='<?php echo base_url(); ?>admin/anak/search/{keyword}' type='text/javascript' ></script>
 
           <form id="formSearchAnak" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAnak()" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAnak()" type="button">Search</button>
 
           </form>
 
@@ -284,7 +277,7 @@
 
                 <!-- UPDATE VAKSIN -->
                 <div class="card-body flex-column d-flex">
-                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="">Update Vaksin</button>
+                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="setAnakOnUpdateVaksin(<?= $row->id ?>)">Update Vaksin</button>
                 </div>
 
                 <!-- UPDATE DATA ANAK -->
@@ -315,14 +308,12 @@
           <h1><img src="<?= base_url('assets/queue.svg') ?>" style="height: 48px">Antrian </h1>
 
           <nav class="navbar navbar-light bg-light justify-content-between">
-          <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/antrian/{keyword} -->
-          <script src='<?php echo base_url(); ?>admin/imunisasi/antrian/{keyword}' type='text/javascript' ></script>
 
           <form id="formSearchAntrian" class="form-inline">
             <input class="form-control mr-sm-2" id="keyword" name="keyword" type="date" placeholder="Search" aria-label="Search">
             
             <!-- searchAntrian -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAntrian()" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAntrian()" type="button">Search</button>
 
           </form>
 
@@ -783,7 +774,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formUpdateAnak" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
