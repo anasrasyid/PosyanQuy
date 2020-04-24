@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 23, 2020 at 05:57 AM
--- Server version: 5.7.24
--- PHP Version: 7.2.11
+-- Host: 127.0.0.1
+-- Generation Time: Apr 24, 2020 at 08:31 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `posyanquy_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `akun`
+-- (See below for the actual view)
+--
+CREATE TABLE `akun` (
+`id` int(11)
+,`email` varchar(255)
+,`password` varchar(255)
+,`type` int(1)
+);
 
 -- --------------------------------------------------------
 
@@ -96,6 +109,7 @@ CREATE TABLE `ibu` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
+  `tanggal_lahir` date NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -104,9 +118,9 @@ CREATE TABLE `ibu` (
 -- Dumping data for table `ibu`
 --
 
-INSERT INTO `ibu` (`id`, `nama`, `alamat`, `email`, `password`) VALUES
-(1, 'Linda W Mitchell', '2819  Biddie Lane', '3cg4tt5xul3@fakemailgenerator.net', 'zxcasd'),
-(2, 'Carrie R Arnold', '3799  Green Gate Lane', 'rnq8pczba8g@meantinc.com', 'hahahihi');
+INSERT INTO `ibu` (`id`, `nama`, `alamat`, `tanggal_lahir`, `email`, `password`) VALUES
+(1, 'Linda W Mitchell', '2819  Biddie Lane', '1990-02-03', '3cg4tt5xul3@fakemailgenerator.net', 'zxcasd'),
+(2, 'Carrie R Arnold', '3799  Green Gate Lane', '1995-01-21', 'rnq8pczba8g@meantinc.com', 'hahahihi');
 
 -- --------------------------------------------------------
 
@@ -157,6 +171,15 @@ INSERT INTO `kader` (`id`, `nama`, `email`, `password`) VALUES
 (1301180154, 'Muhammad Abdurrohman Al Fatih', 'maaf@gmail.com', 'maaf'),
 (1301180211, 'Muhammad Irsyad Al Ghifary', 'akkif@gmail.com', 'akip'),
 (1301181192, 'Anas Rasyid', 'anas@gmail.com', 'anas');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `akun`
+--
+DROP TABLE IF EXISTS `akun`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `akun`  AS  select `ibu`.`id` AS `id`,`ibu`.`email` AS `email`,`ibu`.`password` AS `password`,0 AS `type` from `ibu` union select `kader`.`id` AS `id`,`kader`.`email` AS `email`,`kader`.`password` AS `password`,1 AS `type` from `kader` ;
 
 --
 -- Indexes for dumped tables
