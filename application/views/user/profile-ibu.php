@@ -145,7 +145,7 @@
         function detailImunisasi(id){
             $("#items").empty()
             $.ajax({
-                url: "member/get_imunisasi_history/" + id,
+                url: "get_imunisasi_history/" + id,
                 success: function (result) {
                     var x = JSON.parse(result)
                     console.log(x.length)
@@ -153,9 +153,12 @@
                         var up = '<tr class="table-success">'
                         var down = "<td>"+x[0].tanggal+"</td></tr>"
                         $.ajax({
-                            url: "member/get_imunisasi/" + x[i].id_imunisasi,
+                            url: "get_imunisasi/" + x[i].id_imunisasi,
                             success: function (result) {
                                 $("#items").append(up+"<td>"+JSON.parse(result).nama+"</td>"+down)
+                            },
+                            error: function(){
+                                $("#items").append('<tr class="table-danger"><td>Unloaded</td><td>Unloaded</td></tr>')
                             }
                         });
                     }
@@ -164,7 +167,7 @@
                     }
                 },
                 error: function () {
-                    $("#items").append('<tr class="table-danger"><td> </td><td> </td></tr>')
+                    $("#items").append('<tr class="table-danger"><td>Unloaded</td><td>Unloaded</td></tr>')
                 }
             });
         }
