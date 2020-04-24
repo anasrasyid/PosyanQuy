@@ -125,10 +125,10 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/search/{keyword} -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form id="formSearchImunisasi" class="form-inline">
+            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <!-- searchImunisasi -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchImunisasi()" type="submit">Search</button>
           </form>
             <!--createImunisasi-->
             <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#createImunisasi" type="button">Tambah</button>
@@ -178,11 +178,11 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/ibu/search/{keyword} -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form id="formSearchIbu" class="form-inline">
+            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchIbu()" type="submit">Search</button>
 
           </form>
 
@@ -234,11 +234,11 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/anak/search/{keyword} -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form id="formSearchAnak" class="form-inline">
+            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAnak()" type="submit">Search</button>
 
           </form>
 
@@ -274,7 +274,7 @@
                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(<?= $row->id ?>)">Lihat</button>
               </td>
               <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(<?= $row->id ?>)">Edit</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(<?= $row->id ?>)">Edit</button>
                 <button type="button" class="btn btn-danger" href="<?= site_url('admin/anak/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
               </td>
             </tr>
@@ -295,11 +295,11 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
           <!-- Load Ajax ya gan, call ke URL posyanquy/admin/imunisasi/antrian/{keyword} -->
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+          <form id="formSearchAntrian" class="form-inline">
+            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="date" placeholder="Search" aria-label="Search">
             
             <!-- searchAntrian -->
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAntrian()" type="submit">Search</button>
 
           </form>
 
@@ -693,6 +693,7 @@
                   
                   <!-- form -->
                   <form id="formUpdateAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
+                    <input type="hidden" id="idAnak" name="idAnak">
                     <div class="form-group">
                       <label for="formGroupExampleInput">Nama</label> 
                       <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
