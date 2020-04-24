@@ -43,10 +43,10 @@
                 </div>
 
                 <div class="col-9 p-5 mt-4">
-                    <h4 class="display-4">Nama Bukibuk</h4>
-                    <p class="lead">Umur</p>
-                    <p class="lead">Alamat</p>
-                    <button type="button" class="btn btn-primary">Logout</button>
+                    <h4 class="display-4"><?php echo $ibu->nama ?></h4>
+                    <p class="lead"><?php echo $umur ?></p>
+                    <p class="lead"><?php echo $ibu->alamat?></p>
+                    <button type="button" class="btn btn-primary" onclick="location.href = '<?php echo site_url('member/logout')?>'">Logout</button>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>NO</th>
                     <th>Nama</th>
                     <th>TTL</th>
                     <th>Berat Badan (Kg)</th>
@@ -66,11 +66,12 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $i = 0; foreach ($anak as $row) { ?>
                 <tr>
-                    <td>1</td>
-                    <td>Nama anak 1</td>
-                    <td>29-Feb-2222</td>
-                    <td>10000</td>
+                    <td><?php echo ++$i ?></td>
+                    <td><?php echo $row->nama ?></td>
+                    <td><?php echo $row->tanggal_lahir ?></td>
+                    <td><?php echo $row->berat_badan ?></td>
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#exampleModalCenter">
@@ -78,32 +79,8 @@
                         </button>
                     </td>
                 </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>Nama anak 1</td>
-                    <td>29-Feb-2222</td>
-                    <td>10000</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter">
-                            Lihat
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>Nama anak 1</td>
-                    <td>29-Feb-2222</td>
-                    <td>10000</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter">
-                            Lihat
-                        </button>
-                    </td>
-                </tr>
+                <?php } ?>
+                
             </tbody>
         </table>
     </div>
@@ -129,7 +106,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Detail Imunisasi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -138,7 +115,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-9 p-5 mt-4">
-                            <h3>Ceklis Imunisasi</h3>
+                            <h3>Ceklis Imunisasi <br>TBA</h3>
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>

@@ -53,16 +53,18 @@
 						<form action="<?php echo site_url('member/pendaftaranAntrian')?>" method="POST">
 							<div class="form-group pt-4">
 								<label for="anak">Nama anak:</label><br>
-								<select id="anak" name="anak" form="anakform">
-									<option value="#" selected>jamet madura</option>
+								<select id="anak" name="anak">
+									<?php foreach ($anak as $row) { ?>
+									<option value="<?php echo $row->id ?>" ><?php echo $row->nama?></option>
+									<?php } ?>
 								</select>
 							</div>
 							<div class="form-group pt-4">
 								<label>Pilih Tanggal Imunisasi</label><br>
-								<input type="date" class="tanggal" id="myDate">
+								<input type="date" class="tanggal" name="tanggal" id="myDate">
 							</div>
 							<div class="form-group pt-4 pb-4">
-								<h3>Antrian yang sudah masuk hari ini : <span class="antrian">berapa</span></h3>
+								<h3>Antrian yang sudah masuk hari ini : <span class="antrian"></span></h3>
 							</div>
 							<button type="submit" name="tambah" class="btn btn-primary btn-block">Daftar
 								Antrian</button>
@@ -83,7 +85,10 @@
 					url: "get_antrian/" + $(this).val(),
 					success: function (result) {
 						$(".antrian").html(result);
-					}
+					},
+					error: function () {
+                    	$(".antrian").html(' ');
+                	}
 				});
 			});
 		});

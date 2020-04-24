@@ -12,6 +12,7 @@ class User extends CI_Controller {
         parent::__construct();
         $this->load->view('landing/header');
         $this->load->model('Imunisasi_model');
+        $this->load->model('akun_model');
   	}
 
 	public function index() {
@@ -20,7 +21,21 @@ class User extends CI_Controller {
     }
     
     public function login() {
-        $this->load->view('landing/login');
+        $data = array(
+            'email' => $this->input->post('email'),
+            'password' => $this->input->post('password')
+            );
+        $result = $this->akun_model->get($data);
+        if($result == null){
+            $this->load->view('landing/login');
+        }else{
+            if($result->type == 0){
+                redirect("member");
+            }
+            if($result->type == 1){
+                redirect("admin/Dashboard");
+            }
+        }
     }
     
     public function imunisasi() {
