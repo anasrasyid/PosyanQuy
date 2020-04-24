@@ -156,5 +156,9 @@ $(function() {
                 `);
             };
         });
-    };       
+    };
+
+    window.setAnakOnUpdateVaksin = (id) => {
+        $('#formUpdateVaksinAnak #idAnak').val(id);
+    };
 });

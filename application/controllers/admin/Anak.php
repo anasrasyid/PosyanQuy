@@ -71,4 +71,19 @@ class Anak extends CI_Controller {
         $this->output->set_content_type('application/json');
         $this->output->set_output(json_encode($this->history->get_by_anak($id)));
     }
+    
+    public function imunisasi() {
+        if ($this->input->method() === 'post') {
+          $data = [
+              'tanggal' => $this->input->post('tanggalHistory'),
+              'id_imunisasi' => $this->input->post('selectVaksin'),
+              'id_anak' => $this->input->post('idAnak')
+          ];
+          if ($this->history->create($data)) {
+              redirect('admin/');
+          } else {
+              die('gagal anjing');
+          }
+        }
+    }
 }

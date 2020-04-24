@@ -602,16 +602,16 @@
                   <div class="modal-body">
                   
                   <!-- form -->
-                  <form id="formUpdateVaksinAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
-
+                  <form id="formUpdateVaksinAnak" method="POST" action="<?= site_url('admin/anak/imunisasi') ?>">
+                    <input type="hidden" id="idAnak" name="idAnak">
                     <!-- loop data vaksin yang belum -->
                       <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Vaksin</label>
-                        <select class="form-control" id="selectVaksin">
+                        <select class="form-control" id="selectVaksin" name="selectVaksin">
 
                           <!-- loop daftar list -->
                           <?php foreach ($imunisasi as $row) { ?>
-                            <option><?= $row->nama ?></option>
+                            <option value="<?= $row->id ?>"><?= $row->nama ?></option>
                           <?php }?>
 
                         </select>
@@ -629,7 +629,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formUpdateVaksinAnak" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
