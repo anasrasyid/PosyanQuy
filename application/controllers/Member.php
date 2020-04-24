@@ -10,6 +10,8 @@ class Member extends CI_Controller
     $this->load->model('Antrian_model');
     $this->load->model('Ibu_model');
     $this->load->model('Anak_model');
+    $this->load->model('History_model');
+    $this->load->model('Imunisasi_model');
   }
 
   public function index()
@@ -51,6 +53,10 @@ class Member extends CI_Controller
     
   }
 
+  public function logout(){
+    redirect('');
+  }
+
   public function get_antrian($date) 
   {
     // JSON API
@@ -58,8 +64,17 @@ class Member extends CI_Controller
     echo json_encode($day);
   }
 
-  public function logout(){
-    redirect('');
+  public function get_imunisasi_history($id) 
+  {
+    // JSON API
+    $history = $this->History_model->get_by_anak($id);
+    echo json_encode($history);
   }
 
+  public function get_imunisasi($id) 
+  {
+    // JSON API
+    $imun = $this->Imunisasi_model->get_name($id);
+    echo json_encode($imun);
+  }
 }

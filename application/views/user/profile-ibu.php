@@ -74,7 +74,7 @@
                     <td><?php echo $row->berat_badan ?></td>
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter">
+                            data-target="#exampleModalCenter" onclick="detailImunisasi(<?php echo $row->id ?>)">
                             Lihat
                         </button>
                     </td>
@@ -115,24 +115,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-9 p-5 mt-4">
-                            <h3>Ceklis Imunisasi <br>TBA</h3>
+                            <h3>List Imunisasi</h3>
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Nama Vaksin</th>
-                                        <th>Status</th>
+                                        <th>Tanggal Imunisasi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="table-success">
-                                        <td>COVID-69</td>
-                                        <td>Sudah</td>
-                                    </tr>
-
-                                    <tr class="table-danger">
+                                <tbody id='items'>
+                                    <!-- <tr class="table-danger">
                                         <td>SMADAV</td>
                                         <td>Belum</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -146,5 +141,36 @@
     </div>
 </div>
 <!-- Akhir Modal -->
-
+    <script>
+        function detailImunisasi(id){
+            $("#items").empty()
+            $.ajax({
+                url: "get_imunisasi_history/" + id,
+                success: function (result) {
+                    var x = JSON.parse(result)
+                    console.log(x.length)
+                    for(i = 0; i < x.length; i++){
+                        var up = '<tr class="table-success">'
+                        var down = "<td>"+x[0].tanggal+"</td></tr>"
+                        $.ajax({
+                            url: "get_imunisasi/" + x[i].id_imunisasi,
+                            success: function (result) {
+                                $("#items").append(up+"<td>"+JSON.parse(result).nama+"</td>"+down)
+                            }
+                        });
+                    }
+                    if(x.length == 0){
+                        $("#items").append('<tr class="table-danger"><td>-</td><td>-</td></tr>')
+                    }
+                },
+                error: function () {
+                    $("#items").append('<tr class="table-danger"><td> </td><td> </td></tr>')
+                }
+            });
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </Script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+	</script>
 </html>

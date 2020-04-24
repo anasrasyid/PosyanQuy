@@ -7,6 +7,12 @@ class Imunisasi_model extends CI_Model {
 		$this->db->where('id',$id_ims);
 		return $this->db->get('imunisasi')->row();
 	}
+
+	public function get_name($id_ims) {
+		$this->db->where('id',$id_ims);
+		$this->db->select('nama');
+		return $this->db->get('imunisasi')->row();
+	}
     
     public function get_all() {
 		return $this->db->get('imunisasi')->result();
