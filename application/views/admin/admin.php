@@ -128,7 +128,7 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
 
-          <form id="formSearchImunisasi" class="form-inline">
+          <form id="formSearchImunisasi" class="form-inline" onsubmit="return false;">
             <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <!-- searchImunisasi -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchImunisasi()" type="button">Search</button>
@@ -150,29 +150,10 @@
             </tr>
           </thead>
           <tbody>
-            
-            <?php foreach ($imunisasi as $row) { ?>
-            <tr>
-              <th scope="row"><?= $row->id ?></th>
-              <td><?= $row->nama ?></td>
-              <td><?= $row->syarat_umur ?></td>
-              <td><?= $row->deskripsi ?></td>
-              <td><?= $row->periode ?></td>
-              <td><?= $row->id_kader ?></td>
-              <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(<?= $row->id ?>)">Edit</button>
-                <a type="button" class="btn btn-danger" href="<?= site_url('admin/imunisasi/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
-              </td>
-            </tr>
-            <?php } ?>
-
+            <!-- nanti sama ajax -->
           </tbody>
           </table>
           </div>
-
-          
-
-          
 
           <!--Content ibu id='v-pills-ibu-tab'-->
           <div class="tab-pane fade" id="v-pills-ibu" role="tabpanel" aria-labelledby="v-pills-ibu-tab">
@@ -181,7 +162,7 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
 
-          <form id="formSearchIbu" class="form-inline">
+          <form id="formSearchIbu" class="form-inline" onsubmit="return false;">
             <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
@@ -207,25 +188,7 @@
             </tr>
           </thead>
           <tbody>
-            
-            <?php foreach ($ibu as $row) { ?>
-            <tr>
-              <th scope="row"><?= $row->id ?></th>
-              <td><?= $row->nama ?></td>
-              <td><?= $row->alamat ?></td>
-              <td><?= $row->email ?></td>
-              <td><?= $row->password ?></td>
-              <td>
-                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="getAnakByIbu(<?= $row->id ?>)">Lihat</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(<?= $row->id ?>)">Edit</button>
-                <a type="button" class="btn btn-danger" href="<?= site_url('admin/ibu/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
-              </td>
-            </tr>
-            <?php } ?>
-            
-
+            <!-- nanti sama ajax -->
           </tbody>
           </table>
           </div>
@@ -237,10 +200,10 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
 
-          <form id="formSearchAnak" class="form-inline">
+          <form id="formSearchAnak" class="form-inline" onsubmit="return false;">
             <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
-            <!-- searchIbu -->
+            <!-- searchAnak -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAnak()" type="button">Search</button>
 
           </form>
@@ -258,52 +221,16 @@
               <th scope="col">Tempat Lahir</th>
               <th scope="col">Tanggal Lahir</th>
               <th scope="col">Berat Badan (kg)</th>
-              <th scope="col">ID ibu</th>
+              <th scope="col">Ibu</th>
               <th scope="col">History Vaksin</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            
-            <?php foreach ($anak as $row) { ?>
-            <tr>
-              <th scope="row"><?= $row->id ?></th>
-              <td><?= $row->nama ?></td>
-              <td><?= $row->tempat_lahir ?></td>
-              <td><?= $row->tanggal_lahir ?></td>
-              <td><?= $row->berat_badan ?></td>
-              <td><?= $row->id_ibu ?></td>
-              <td>
-                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(<?= $row->id ?>)">Lihat</button>
-              </td>
-              <td>
-
-                <!-- UPDATE VAKSIN -->
-                <div class="card-body flex-column d-flex">
-                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="setAnakOnUpdateVaksin(<?= $row->id ?>)">Update Vaksin</button>
-                </div>
-
-                <!-- UPDATE DATA ANAK -->
-                <div class="card-body flex-column d-flex">
-                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(<?= $row->id ?>)">Edit</button>
-                </div>
-
-                <!-- DELETE -->
-                <div class="card-body flex-column d-flex">
-                  <a type="button" class="btn btn-danger" href="<?= site_url('admin/anak/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
-                </div>
-
-              </td>
-            </tr>
-            <?php } ?>
-
+            <!-- nanti sama ajax -->
           </tbody>
           </table>
           </div>
-
-          
-
-          
 
           <!--Content antrian id='v-pills-antrian-tab'-->
           <div class="tab-pane fade" id="v-pills-antrian" role="tabpanel" aria-labelledby="v-pills-antrian-tab">
@@ -312,7 +239,7 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
 
-          <form id="formSearchAntrian" class="form-inline">
+          <form id="formSearchAntrian" class="form-inline" onsubmit="return false;">
             <input class="form-control mr-sm-2" name="keyword" type="date" placeholder="Search" aria-label="Search">
             
             <!-- searchAntrian -->
@@ -326,26 +253,14 @@
           <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">ID antrian</th>
+              <th scope="col">ID Antrian</th>
               <th scope="col">Waktu</th>
-              <th scope="col">ID ibu</th>
+              <th scope="col">Ibu</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            
-            <?php foreach ($antrian as $row) { ?>
-            <tr>
-              <th scope="row"><?= $row->id ?></th>
-              <td><?= $row->waktu ?></td>
-              <td><?= $row->id_ibu ?></td>
-              <td>
-                <a type="button" class="btn btn-danger" href="<?= site_url('admin/antrian/delete/' . $row->id) ?>" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
-              </td>
-            </tr>
-            <?php } ?>
-            
-
+            <!-- nanti sama ajax -->
           </tbody>
           </table>
           </div>
@@ -565,16 +480,7 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                  <!-- loop disini
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Annisa</td>
-                      <td>14/4/2020</td>
-                      <td>14</td>
-                    </tr>
-                  -->
-
+                    <!-- nanti sama ajax -->
                   </tbody>
                   </table>
 
@@ -661,16 +567,7 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                  <!-- loop disini
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>dd/mm/yyyy</td>
-                      <td>hepatitis B</td>
-                      <td><button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button></td>
-                    </tr>
-                  -->
-
+                    <!-- nanti sama ajax -->
                   </tbody>
                   </table>
 
@@ -775,12 +672,9 @@
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Ibu</label>
                       <select class="form-control" name="idIbu">
-
-                        <!-- loop daftar list -->
                         <?php foreach ($ibu as $row) { ?>
                           <option value="<?= $row->id ?>"><?= $row->id . ' - ' . $row->nama ?></option>
                         <?php }?>
-
                       </select>
                     </div>
 

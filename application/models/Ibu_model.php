@@ -30,6 +30,5 @@ class Ibu_model extends CI_Model {
     public function search($keyword) {
         $this->db->or_like(['nama' => $keyword, 'alamat' => $keyword, 'email' => $keyword]);
         return $this->db->get('ibu')->result_array();
-	
 	}
 }

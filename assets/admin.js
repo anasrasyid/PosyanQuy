@@ -52,7 +52,7 @@ $(function() {
             $('#formUpdateAnak input[name="bbAnak"]').val(data['berat_badan']);
             $('#formUpdateAnak input[name="ttl"]').val(data['tanggal_lahir']);
             $('#formUpdateAnak input[name="ttl1"]').val(data['tempat_lahir']);
-            $('#formUpdateAnak input[name="idIbu"]').val(data['id_ibu']);
+            $('#formUpdateAnak select[name="idIbu"]').val(data['id_ibu']).change();
         });
     };
     
@@ -64,7 +64,7 @@ $(function() {
                 <tr>
                   <th scope="row">${row['id']}</th>
                   <td>${row['tanggal']}</td>
-                  <td>${row['id_imunisasi']}</td>
+                  <td>${row['nama_vaksin']}</td>
                   <td><a type="button" class="btn btn-danger" href="anak/deleteVaksin/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a></td>
                 </tr>
                 `);
@@ -86,8 +86,12 @@ $(function() {
                   <td>${row['periode']}</td>
                   <td>${row['id_kader']}</td>
                   <td>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(${row['id']})">Edit</button>
-                    <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    <div class="card-body flex-column d-flex">
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(${row['id']})">Edit</button>
+                    </div>
+                    <div class="card-body flex-column d-flex">
+                      <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    </div>
                   </td>
                 </tr>
                 `);
@@ -111,8 +115,12 @@ $(function() {
                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="getAnakByIbu(${row['id']})">Lihat</button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(${row['id']})">Edit</button>
-                    <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    <div class="card-body flex-column d-flex">
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(${row['id']})">Edit</button>
+                    </div>
+                    <div class="card-body flex-column d-flex">
+                      <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    </div>
                   </td>
                 </tr>
                 `);
@@ -132,13 +140,20 @@ $(function() {
                   <td>${row['tempat_lahir']}</td>
                   <td>${row['tanggal_lahir']}</td>
                   <td>${row['berat_badan']}</td>
-                  <td>${row['id_ibu']}</td>
+                  <td>${row['id_ibu'] + ' - ' + row['nama_ibu']}</td>
                   <td>
                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(${row['id']})">Lihat</button>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(${row['id']})">Edit</button>
-                    <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    <div class="card-body flex-column d-flex">
+                      <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="setAnakOnUpdateVaksin(<?= $row->id ?>)">Update Vaksin</button>
+                    </div>
+                    <div class="card-body flex-column d-flex">
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(${row['id']})">Edit</button>
+                    </div>
+                    <div class="card-body flex-column d-flex">
+                      <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                    </div>
                   </td>
                 </tr>
                 `);
@@ -155,10 +170,8 @@ $(function() {
                 <tr>
                   <th scope="row">${row['id']}</th>
                   <td>${row['waktu']}</td>
-                  <td>${row['id_ibu']}</td>
-                  <td>
-                    <a type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
-                  </td>
+                  <td>${row['id_ibu'] + ' - ' + row['nama_ibu']}</td>
+                  <td><a type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a></td>
                 </tr>
                 `);
             };
@@ -168,4 +181,9 @@ $(function() {
     window.setAnakOnUpdateVaksin = (id) => {
         $('#formUpdateVaksinAnak input[name="idAnak"]').val(id);
     };
+    
+    searchImunisasi();
+    searchIbu();
+    searchAnak();
+    searchAntrian();
 });
