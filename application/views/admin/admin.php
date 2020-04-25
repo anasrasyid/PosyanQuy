@@ -688,7 +688,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Ibu</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form Anak</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -715,7 +715,7 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
+                      <input type="number" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
                     </div>
                   </form>
 
@@ -724,7 +724,7 @@
                   <!-- button save modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="formCreateIbu" class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="formCreateAnak" class="btn btn-primary">Save changes</button>
                   </div>
 
                 </div>
