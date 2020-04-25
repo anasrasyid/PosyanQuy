@@ -380,11 +380,11 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Syarat Umur</label>
-                      <input type="text" class="form-control" name="syaratUmur" id="syaratUmur" placeholder="Dalam Bulan" required>
+                      <input type="number" class="form-control" name="syaratUmur" id="syaratUmur" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="x" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
