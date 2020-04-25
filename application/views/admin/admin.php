@@ -47,12 +47,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet" />
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="<?= base_url('assets/admin.js') ?>"></script>
     <title>Admin Panel | Dashboard</title>
 
@@ -126,7 +129,7 @@
           <nav class="navbar navbar-light bg-light justify-content-between">
 
           <form id="formSearchImunisasi" class="form-inline">
-            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <!-- searchImunisasi -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchImunisasi()" type="button">Search</button>
           </form>
@@ -179,7 +182,7 @@
           <nav class="navbar navbar-light bg-light justify-content-between">
 
           <form id="formSearchIbu" class="form-inline">
-            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchIbu()" type="button">Search</button>
@@ -235,7 +238,7 @@
           <nav class="navbar navbar-light bg-light justify-content-between">
 
           <form id="formSearchAnak" class="form-inline">
-            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
             
             <!-- searchIbu -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAnak()" type="button">Search</button>
@@ -310,7 +313,7 @@
           <nav class="navbar navbar-light bg-light justify-content-between">
 
           <form id="formSearchAntrian" class="form-inline">
-            <input class="form-control mr-sm-2" id="keyword" name="keyword" type="date" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" name="keyword" type="date" placeholder="Search" aria-label="Search">
             
             <!-- searchAntrian -->
             <button class="btn btn-outline-primary my-2 my-sm-0" onclick="searchAntrian()" type="button">Search</button>
@@ -372,23 +375,23 @@
                   <form id="formCreateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
-                      <input type="text" class="form-control" name="namaVaksin" id="namaVaksin" placeholder="Nama Imunisasi" required>
+                      <input type="text" class="form-control" name="namaVaksin" placeholder="Nama Imunisasi" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Deskripsi</label>
-                      <textarea type="text" class="form-control" name="deskripsiVaksin" id="deskripsiVaksin" placeholder="Vaksin apa | Deskripsi" required></textarea>
+                      <textarea type="text" class="form-control" name="deskripsiVaksin" placeholder="Vaksin apa | Deskripsi" required></textarea>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Syarat Umur</label>
-                      <input type="number" class="form-control" name="syaratUmur" id="syaratUmur" placeholder="Dalam Bulan" required>
+                      <input type="number" class="form-control" name="syaratUmur" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="x" required>
+                      <input type="number" class="form-control" name="periodeVaksin" placeholder="x" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
-                      <input type="number" class="form-control" name="idKader" id="idKader" placeholder="13011xxxxx" required>
+                      <input type="number" class="form-control" name="idKader" placeholder="13011xxxxx" required>
                     </div>
 
                   </form>
@@ -419,26 +422,26 @@
                   
                   <!-- form -->
                   <form id="formUpdateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/update') ?>">
-                    <input type="hidden" id="idVaksin" name="idVaksin">
+                    <input type="hidden" name="idVaksin">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
-                      <input type="text" class="form-control" name="namaVaksin" id="namaVaksin" placeholder="Nama Imunisasi" required>
+                      <input type="text" class="form-control" name="namaVaksin" placeholder="Nama Imunisasi" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Deskripsi</label>
-                      <textarea type="text" class="form-control" name="deskripsiVaksin" id="deskripsiVaksin" placeholder="Vaksin apa | Deskripsi" required></textarea>
+                      <textarea type="text" class="form-control" name="deskripsiVaksin" placeholder="Vaksin apa | Deskripsi" required></textarea>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Syarat Umur</label>
-                      <input type="text" class="form-control" name="syaratUmur" id="syaratUmur" placeholder="Dalam Bulan" required>
+                      <input type="text" class="form-control" name="syaratUmur" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="periodeVaksin" placeholder="dd-mm-yyyy" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
-                      <input type="number" class="form-control" name="idKader" id="idKader" placeholder="13011xxxxx" required>
+                      <input type="number" class="form-control" name="idKader" placeholder="13011xxxxx" required>
                     </div>
 
                   </form>
@@ -473,19 +476,19 @@
                   <form id="formCreateIbu" method="POST" action="<?= site_url('admin/ibu/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama Ibu</label>
-                      <input type="text" class="form-control" name="namaIbu" id="namaIbu" placeholder="Nama Ibu" required>
+                      <input type="text" class="form-control" name="namaIbu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Alamat</label>
-                      <textarea type="text" class="form-control" name="alamatIbu" id="alamatIbu" placeholder="alamat" required></textarea>
+                      <textarea type="text" class="form-control" name="alamatIbu" placeholder="alamat" required></textarea>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Email</label>
-                      <input type="email" class="form-control" name="emailIbu" id="emailIbu" placeholder="ibu@email.com" required></input>
+                      <input type="email" class="form-control" name="emailIbu" placeholder="ibu@email.com" required></input>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Password</label>
-                      <input type="password" class="form-control" name="passwordIbu" id="passwordIbu" placeholder="password" required></input>
+                      <input type="password" class="form-control" name="passwordIbu" placeholder="password" required></input>
                     </div>
 
                   </form>
@@ -516,14 +519,14 @@
                   
                   <!-- form -->
                   <form id="formUpdateIbu" method="POST" action="<?= site_url('admin/ibu/update') ?>">
-                    <input type="hidden" id="idIbu" name="idIbu">
+                    <input type="hidden" name="idIbu">
                     <div class="form-group">
                       <label for="formGroupExampleInput">Nama</label> 
-                      <input type="text" class="form-control" name="namaIbu" id="namaIbu" placeholder="Nama Ibu" required>
+                      <input type="text" class="form-control" name="namaIbu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Alamat</label>
-                      <textarea type="text" class="form-control" name="alamatIbu" id="alamatIbu" placeholder="alamat" required></textarea>
+                      <textarea type="text" class="form-control" name="alamatIbu" placeholder="alamat" required></textarea>
                     </div>
 
                   </form>
@@ -603,11 +606,11 @@
                   
                   <!-- form -->
                   <form id="formUpdateVaksinAnak" method="POST" action="<?= site_url('admin/anak/imunisasi') ?>">
-                    <input type="hidden" id="idAnak" name="idAnak">
+                    <input type="hidden" name="idAnak">
                     <!-- loop data vaksin yang belum -->
                       <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Vaksin</label>
-                        <select class="form-control" id="selectVaksin" name="selectVaksin">
+                        <select class="form-control" name="idVaksin">
 
                           <!-- loop daftar list -->
                           <?php foreach ($imunisasi as $row) { ?>
@@ -699,23 +702,30 @@
                   <form id="formCreateAnak" method="POST" action="<?= site_url('admin/anak/create') ?>">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
-                      <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
+                      <input type="text" class="form-control" name="namaAnak" placeholder="Nama Anak" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Berat Badan (kg) </label>
-                      <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required>
+                      <input type="number" class="form-control" name="bbAnak" placeholder="contoh 1" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
+                      <input type="date" class="form-control" name="ttl" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Tempat Lahir</label>
-                      <input type="text" class="form-control" name="ttl1" id="ttl1" placeholder="Nama Kota" required>
+                      <input type="text" class="form-control" name="ttl1" placeholder="Nama Kota" required>
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="number" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
+                      <label for="formGroupExampleInput2">Ibu</label>
+                      <select class="form-control" name="idIbu">
+
+                        <!-- loop daftar list -->
+                        <?php foreach ($ibu as $row) { ?>
+                          <option value="<?= $row->id ?>"><?= $row->id . ' - ' . $row->nama ?></option>
+                        <?php }?>
+
+                      </select>
                     </div>
                   </form>
 
@@ -745,26 +755,33 @@
                   
                   <!-- form -->
                   <form id="formUpdateAnak" method="POST" action="<?= site_url('admin/anak/update') ?>">
-                    <input type="hidden" id="idAnak" name="idAnak">
+                    <input type="hidden" name="idAnak">
                     <div class="formCreate">
                       <label for="formGroupExampleInput">Nama</label>
-                      <input type="text" class="form-control" name="namaAnak" id="namaAnak" placeholder="Nama Anak" required>
+                      <input type="text" class="form-control" name="namaAnak" placeholder="Nama Anak" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Berat Badan (kg) </label>
-                      <input type="number" class="form-control" name="bbAnak" id="bbAnak" placeholder="contoh 1" required>
+                      <input type="number" class="form-control" name="bbAnak" placeholder="contoh 1" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="ttl" id="ttl" placeholder="Dalam Bulan" required>
+                      <input type="date" class="form-control" name="ttl" placeholder="Dalam Bulan" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Tempat Lahir</label>
-                      <input type="text" class="form-control" name="ttl1" id="ttl1" placeholder="Nama Kota" required>
+                      <input type="text" class="form-control" name="ttl1" placeholder="Nama Kota" required>
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput2">ID ibu</label>
-                      <input type="text" class="form-control" name="idIbu" id="idIbu" placeholder="id Ibu" required>
+                      <label for="formGroupExampleInput2">Ibu</label>
+                      <select class="form-control" name="idIbu">
+
+                        <!-- loop daftar list -->
+                        <?php foreach ($ibu as $row) { ?>
+                          <option value="<?= $row->id ?>"><?= $row->id . ' - ' . $row->nama ?></option>
+                        <?php }?>
+
+                      </select>
                     </div>
 
                   </form>

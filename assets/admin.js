@@ -1,14 +1,21 @@
 $(function() {
-    //FUNGSI SEARCH BELOM, ARGH DEADLINE
+    $('select').each(function () {
+        $(this).select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder')
+        });
+    });
+
     
     window.getImunisasi = (id) => {
         $.getJSON('imunisasi/get/' + id, (data) => {
-            $('#formUpdateImunisasi #idVaksin').val(data['id']);
-            $('#formUpdateImunisasi #namaVaksin').val(data['nama']);
-            $('#formUpdateImunisasi #deskripsiVaksin').text(data['deskripsi']);
-            $('#formUpdateImunisasi #syaratUmur').val(data['syarat_umur']);
-            $('#formUpdateImunisasi #periodeVaksin').val(data['periode']);
-            $('#formUpdateImunisasi #idKader').val(data['id_kader']);
+            $('#formUpdateImunisasi input[name="idVaksin"]').val(data['id']);
+            $('#formUpdateImunisasi input[name="namaVaksin"]').val(data['nama']);
+            $('#formUpdateImunisasi textarea[name="deskripsiVaksin"]').text(data['deskripsi']);
+            $('#formUpdateImunisasi input[name="syaratUmur"]').val(data['syarat_umur']);
+            $('#formUpdateImunisasi input[name="periodeVaksin"]').val(data['periode']);
+            $('#formUpdateImunisasi input[name="idKader"]').val(data['id_kader']);
         });
     };
     
@@ -32,20 +39,20 @@ $(function() {
     
     window.getIbu = (id) => {
         $.getJSON('ibu/get/' + id, (data) => {
-            $('#formUpdateIbu #idIbu').val(data['id']);
-            $('#formUpdateIbu #namaIbu').val(data['nama']);
-            $('#formUpdateIbu #alamatIbu').text(data['alamat']);
+            $('#formUpdateIbu input[name="idIbu"]').val(data['id']);
+            $('#formUpdateIbu input[name="namaIbu"]').val(data['nama']);
+            $('#formUpdateIbu textarea[name="alamatIbu"]').text(data['alamat']);
         });
     };
     
     window.getAnak = (id) => {
         $.getJSON('anak/get/' + id, (data) => {
-            $('#formUpdateAnak #idAnak').val(data['id']);
-            $('#formUpdateAnak #namaAnak').val(data['nama']);
-            $('#formUpdateAnak #bbAnak').val(data['berat_badan']);
-            $('#formUpdateAnak #ttl').val(data['tanggal_lahir']);
-            $('#formUpdateAnak #ttl1').val(data['tempat_lahir']);
-            $('#formUpdateAnak #idIbu').val(data['id_ibu']);
+            $('#formUpdateAnak input[name="idAnak"]').val(data['id']);
+            $('#formUpdateAnak input[name="namaAnak"]').val(data['nama']);
+            $('#formUpdateAnak input[name="bbAnak"]').val(data['berat_badan']);
+            $('#formUpdateAnak input[name="ttl"]').val(data['tanggal_lahir']);
+            $('#formUpdateAnak input[name="ttl1"]').val(data['tempat_lahir']);
+            $('#formUpdateAnak input[name="idIbu"]').val(data['id_ibu']);
         });
     };
     
@@ -66,7 +73,7 @@ $(function() {
     };
 
     window.searchImunisasi = () => {
-        var keyword = $('#formSearchImunisasi #keyword').val();
+        var keyword = $('#formSearchImunisasi input[name="keyword"]').val();
         $.getJSON('imunisasi/search/' + keyword, (data) => {
             $('#v-pills-imunisasi tbody').html('');
             for (var row of data) {
@@ -89,7 +96,7 @@ $(function() {
     };
     
     window.searchIbu = () => {
-        var keyword = $('#formSearchIbu #keyword').val();
+        var keyword = $('#formSearchIbu input[name="keyword"]').val();
         $.getJSON('ibu/search/' + keyword, (data) => {
             $('#v-pills-ibu tbody').html('');
             for (var row of data) {
@@ -114,7 +121,7 @@ $(function() {
     };
 
     window.searchAnak = () => {
-        var keyword = $('#formSearchAnak #keyword').val();
+        var keyword = $('#formSearchAnak input[name="keyword"]').val();
         $.getJSON('anak/search/' + keyword, (data) => {
             $('#v-pills-anak tbody').html('');
             for (var row of data) {
@@ -140,7 +147,7 @@ $(function() {
     };
 
     window.searchAntrian = () => {
-        var keyword = $('#formSearchAntrian #keyword').val();
+        var keyword = $('#formSearchAntrian input[name="keyword"]').val();
         $.getJSON('antrian/search/' + keyword, (data) => {
             $('#v-pills-antrian tbody').html('');
             for (var row of data) {
@@ -159,6 +166,6 @@ $(function() {
     };
 
     window.setAnakOnUpdateVaksin = (id) => {
-        $('#formUpdateVaksinAnak #idAnak').val(id);
+        $('#formUpdateVaksinAnak input[name="idAnak"]').val(id);
     };
 });

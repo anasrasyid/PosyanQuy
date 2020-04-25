@@ -84,7 +84,7 @@ class Anak extends CI_Controller {
         if ($this->input->method() === 'post') {
           $data = [
               'tanggal' => $this->input->post('tanggalHistory'),
-              'id_imunisasi' => $this->input->post('selectVaksin'),
+              'id_imunisasi' => $this->input->post('idVaksin'),
               'id_anak' => $this->input->post('idAnak')
           ];
           if ($this->history->create($data)) {
