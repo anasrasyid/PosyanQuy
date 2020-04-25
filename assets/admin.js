@@ -58,7 +58,7 @@ $(function() {
                   <th scope="row">${row['id']}</th>
                   <td>${row['tanggal']}</td>
                   <td>${row['id_imunisasi']}</td>
-                  <td><button type="button" class="btn btn-danger" href="#modul delete php" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button></td>
+                  <td><a type="button" class="btn btn-danger" href="anak/deleteVaksin/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a></td>
                 </tr>
                 `);
             };

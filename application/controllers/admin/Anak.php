@@ -61,6 +61,14 @@ class Anak extends CI_Controller {
             die('gagal anjing');
         }
     }
+
+    public function deleteVaksin($id) {
+        if ($this->history->delete($id)) {
+            redirect('admin/');
+        } else {
+            die('gagal anjing');
+        }
+    }
     
     public function search($keyword = '') {  
         $this->output->set_content_type('application/json');
