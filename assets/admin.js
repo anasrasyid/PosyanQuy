@@ -80,7 +80,7 @@ $(function() {
                   <td>${row['id_kader']}</td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
                   </td>
                 </tr>
                 `);
@@ -105,7 +105,7 @@ $(function() {
                   </td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
                   </td>
                 </tr>
                 `);
@@ -131,7 +131,7 @@ $(function() {
                   </td>
                   <td>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(${row['id']})">Edit</button>
-                    <button type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
                   </td>
                 </tr>
                 `);
@@ -150,7 +150,7 @@ $(function() {
                   <td>${row['waktu']}</td>
                   <td>${row['id_ibu']}</td>
                   <td>
-                    <button type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</button>
+                    <a type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
                   </td>
                 </tr>
                 `);
