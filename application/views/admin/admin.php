@@ -384,7 +384,7 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="date" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
@@ -434,7 +434,7 @@
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">Periode</label>
-                      <input type="date" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
+                      <input type="number" class="form-control" name="periodeVaksin" id="periodeVaksin" placeholder="dd-mm-yyyy" required>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput2">ID kader</label>
