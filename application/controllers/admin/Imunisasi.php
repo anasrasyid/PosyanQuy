@@ -26,6 +26,7 @@ class Imunisasi extends CI_Controller {
                 'periode' => $this->input->post('periodeVaksin'),
                 'id_kader' => $this->input->post('idKader')
             ];
+            //nanti return hasil boolean createnya aja saat implement sweetalert
             if ($this->imunisasi->create($data)) {
                 redirect('admin/');
             } else {
@@ -43,6 +44,7 @@ class Imunisasi extends CI_Controller {
                 'deskripsi' => $this->input->post('deskripsiVaksin'),
                 'periode' => $this->input->post('periodeVaksin')
             ];
+            //nanti return hasil boolean updatenya aja saat implement sweetalert
             if ($this->imunisasi->update($id, $data)) {
                 redirect('admin/');
             } else {
@@ -52,6 +54,7 @@ class Imunisasi extends CI_Controller {
     }
     
     public function delete($id) {
+        //nanti return hasil boolean deletenya aja saat implement sweetalert
         if ($this->imunisasi->delete($id)) {
             redirect('admin/');
         } else {

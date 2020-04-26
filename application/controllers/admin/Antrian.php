@@ -35,6 +35,7 @@ class Antrian extends CI_Controller {
     */
     
     public function delete($id) {
+        //nanti return hasil boolean deletenya aja saat implement sweetalert
         if ($this->antrian->delete($id)) {
             redirect('admin/');
         } else {

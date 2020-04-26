@@ -208,7 +208,7 @@
                         </form>
 
                         <!--createAnak-->
-                        <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#createAnak" type="button">Tambah</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#createAnak" onclick="setFormCreateAnak()" type="button">Tambah</button>
 
                     </nav>
 
@@ -511,11 +511,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Nama Vaksin</label>
                             <select class="form-control" name="idVaksin">
-                                <?php foreach ($imunisasi as $row) { ?>
-                                <option value="<?= $row->id ?>">
-                                    <?= $row->nama ?>
-                                </option>
-                                <?php }?>
+                                <!-- nanti sama ajax -->
                             </select>
                         </div>
 
@@ -607,11 +603,7 @@
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Ibu</label>
                             <select class="form-control" name="idIbu">
-                                <?php foreach ($ibu as $row) { ?>
-                                <option value="<?= $row->id ?>">
-                                    <?= $row->id . ' - ' . $row->nama ?>
-                                </option>
-                                <?php }?>
+                                <!-- nanti sama ajax -->
                             </select>
                         </div>
                     </form>
@@ -662,11 +654,7 @@
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Ibu</label>
                             <select class="form-control" name="idIbu">
-                                <?php foreach ($ibu as $row) { ?>
-                                <option value="<?= $row->id ?>">
-                                    <?= $row->id . ' - ' . $row->nama ?>
-                                </option>
-                                <?php }?>
+                                <!-- nanti sama ajax -->
                             </select>
                         </div>
 

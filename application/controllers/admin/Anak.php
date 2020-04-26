@@ -27,6 +27,7 @@ class Anak extends CI_Controller {
                 'berat_badan' => $this->input->post('bbAnak'),
                 'id_ibu' => $this->input->post('idIbu')
             ];
+            //nanti return hasil boolean createnya aja saat implement sweetalert
             if ($this->anak->create($data)) {
                 redirect('admin/');
             } else {
@@ -46,6 +47,7 @@ class Anak extends CI_Controller {
                 'berat_badan' => $this->input->post('bbAnak'),
                 'id_ibu' => $this->input->post('idIbu')
             ];
+            //nanti return hasil boolean updatenya aja saat implement sweetalert
             if ($this->anak->update($id, $data)) {
                 redirect('admin/');
             } else {
@@ -55,6 +57,7 @@ class Anak extends CI_Controller {
     }
     
     public function delete($id) {
+        //nanti return hasil boolean deletenya aja saat implement sweetalert
         if ($this->anak->delete($id)) {
             redirect('admin/');
         } else {
@@ -63,6 +66,7 @@ class Anak extends CI_Controller {
     }
 
     public function deleteVaksin($id) {
+        //nanti return hasil boolean deletenya aja saat implement sweetalert
         if ($this->history->delete($id)) {
             redirect('admin/');
         } else {
@@ -87,6 +91,7 @@ class Anak extends CI_Controller {
               'id_imunisasi' => $this->input->post('idVaksin'),
               'id_anak' => $this->input->post('idAnak')
           ];
+          //nanti return hasil boolean createnya aja saat implement sweetalert
           if ($this->history->create($data)) {
               redirect('admin/');
           } else {

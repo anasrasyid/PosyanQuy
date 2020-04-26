@@ -1,14 +1,11 @@
 $(function() {
-    $('select').each(function () {
-        $(this).select2({
-            theme: 'bootstrap4',
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            placeholder: $(this).data('placeholder')
-        });
-    });
-
+    var select2Config = {
+        theme: 'bootstrap4',
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: $(this).data('placeholder')
+    };
     
-    window.getImunisasi = (id) => {
+    window.setFormUpdateImunisasi = (id) => {
         $.getJSON('imunisasi/get/' + id, (data) => {
             $('#formUpdateImunisasi input[name="idVaksin"]').val(data['id']);
             $('#formUpdateImunisasi input[name="namaVaksin"]').val(data['nama']);
@@ -19,7 +16,7 @@ $(function() {
         });
     };
     
-    window.getAnakByIbu = (id) => {
+    window.setLihatAnak = (id) => {
         $.getJSON('ibu/list_anak/' + id, (data) => {
             $('#lihatAnak tbody').html('');
             var i = 1;
@@ -37,7 +34,7 @@ $(function() {
         });
     };
     
-    window.getIbu = (id) => {
+    window.setFormUpdateIbu = (id) => {
         $.getJSON('ibu/get/' + id, (data) => {
             $('#formUpdateIbu input[name="idIbu"]').val(data['id']);
             $('#formUpdateIbu input[name="namaIbu"]').val(data['nama']);
@@ -45,7 +42,18 @@ $(function() {
         });
     };
     
-    window.getAnak = (id) => {
+    window.setFormUpdateAnak = (id) => {
+        //update select idIbu to latest data
+        $.getJSON('ibu/search/', (data) => {
+            $('#formUpdateAnak select[name="idIbu"]').html('');
+            for (var row of data) {
+                $('#formUpdateAnak select[name="idIbu"]').append($('<option/>', {
+                    value: row['id'],
+                    text: row['id'] + ' - ' + row['nama']
+                }));
+            }
+            $('#formUpdateAnak select[name="idIbu"]').select2(select2Config);
+        });
         $.getJSON('anak/get/' + id, (data) => {
             $('#formUpdateAnak input[name="idAnak"]').val(data['id']);
             $('#formUpdateAnak input[name="namaAnak"]').val(data['nama']);
@@ -56,7 +64,7 @@ $(function() {
         });
     };
     
-    window.getHistoryVaksinByAnak = (id) => {
+    window.setHistoryVaksin = (id) => {
         $.getJSON('anak/history_vaksin/' + id, (data) => {
             $('#historyVaksin tbody').html('');
             for (var row of data) {
@@ -87,7 +95,7 @@ $(function() {
                   <td>${row['id_kader']}</td>
                   <td>
                     <div class="card-body flex-column d-flex">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="getImunisasi(${row['id']})">Edit</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="setFormUpdateImunisasi(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
                       <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
@@ -112,11 +120,11 @@ $(function() {
                   <td>${row['email']}</td>
                   <td>${row['password']}</td>
                   <td>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="getAnakByIbu(${row['id']})">Lihat</button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#lihatAnak" onclick="setLihatAnak(${row['id']})">Lihat</button>
                   </td>
                   <td>
                     <div class="card-body flex-column d-flex">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="getIbu(${row['id']})">Edit</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="setFormUpdateIbu(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
                       <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
@@ -142,14 +150,14 @@ $(function() {
                   <td>${row['berat_badan']}</td>
                   <td>${row['id_ibu'] + ' - ' + row['nama_ibu']}</td>
                   <td>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="getHistoryVaksinByAnak(${row['id']})">Lihat</button>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#historyVaksin" onclick="setHistoryVaksin(${row['id']})">Lihat</button>
                   </td>
                   <td>
                     <div class="card-body flex-column d-flex">
-                      <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="setAnakOnUpdateVaksin(<?= $row->id ?>)">Update Vaksin</button>
+                      <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateVaksinAnak" onclick="setFormUpdateVaksinAnak(${row['id']})">Update Vaksin</button>
                     </div>
                     <div class="card-body flex-column d-flex">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="getAnak(${row['id']})">Edit</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="setFormUpdateAnak(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
                       <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
@@ -178,9 +186,34 @@ $(function() {
         });
     };
 
-    window.setAnakOnUpdateVaksin = (id) => {
+    window.setFormUpdateVaksinAnak = (id) => {
+        //update select isVaksin to latest data
+        $.getJSON('imunisasi/search/', (data) => {
+            $('#formUpdateVaksinAnak select[name="idVaksin"]').html('');
+            for (var row of data) {
+                $('#formUpdateVaksinAnak select[name="idVaksin"]').append($('<option/>', {
+                    value: row['id'],
+                    text: row['nama']
+                }));
+            }
+            $('#formUpdateVaksinAnak select[name="idVaksin"]').select2(select2Config);
+        });
         $('#formUpdateVaksinAnak input[name="idAnak"]').val(id);
     };
+    
+    window.setFormCreateAnak = () => {
+        //update select idIbu to latest data
+        $.getJSON('ibu/search/', (data) => {
+            $('#formCreateAnak select[name="idIbu"]').html('');
+            for (var row of data) {
+                $('#formCreateAnak select[name="idIbu"]').append($('<option/>', {
+                    value: row['id'],
+                    text: row['id'] + ' - ' + row['nama']
+                }));
+            }
+            $('#formCreateAnak select[name="idIbu"]').select2(select2Config);
+        });
+    }
     
     searchImunisasi();
     searchIbu();

@@ -26,6 +26,7 @@ class Ibu extends CI_Controller {
                 'email' => $this->input->post('emailIbu'),
                 'password' => $this->input->post('passwordIbu')
             ];
+            //nanti return hasil boolean createnya aja saat implement sweetalert
             if ($this->ibu->create($data)) {
                 redirect('admin/');
             } else {
@@ -43,6 +44,7 @@ class Ibu extends CI_Controller {
                 // 'email' => $this->input->post('emailIbu'),
                 // 'password' => $this->input->post('passwordIbu')
             ];
+            //nanti return hasil boolean updatenya aja saat implement sweetalert
             if ($this->ibu->update($id, $data)) {
                 redirect('admin/');
             } else {
@@ -52,6 +54,7 @@ class Ibu extends CI_Controller {
     }
     
     public function delete($id) {
+        //nanti return hasil boolean deletenya aja saat implement sweetalert
         if ($this->ibu->delete($id)) {
             redirect('admin/');
         } else {
