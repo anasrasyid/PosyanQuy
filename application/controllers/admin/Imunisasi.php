@@ -37,7 +37,7 @@ class Imunisasi extends CI_Controller {
     
     public function update() {
         if ($this->input->method() === 'post') {
-            $id = $this->input->post('id');
+            $id = $this->input->post('idVaksin');
             $data = [
                 'nama' => $this->input->post('namaVaksin'),
                 'syarat_umur' => $this->input->post('syaratUmur'),
