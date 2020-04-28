@@ -27,10 +27,10 @@
             <p class="card-text d-flex justify-content-center">Quy! berikan imunisasi kepada anak tepat pada umur yang dianjurkan🤏</p>
             <br>
             <div class="table-responsive-sm">
-                <table class="table table-striped">
+                <table class="table table-striped" id='tabel_imunisasi'>
                     <thead>
                     <tr>
-                        <th scope="col"style="text-align: center">NO</th>
+                        <!-- <th scope="col"style="text-align: center">NO</th> -->
                         <th scope="col"style="text-align: center">Nama</th>
                         <th scope="col" style="width:55%">Deskripsi</th>
                         <th scope="col"style="text-align: center">Periode</th>
@@ -43,7 +43,7 @@
                     <?php $i = 0; foreach ($imunisasi as $row) { ?>
                     
                     <tr>
-                        <th scope="row"><?= ++$i ?></th>
+                        <!-- <th scope="row"><?= ++$i ?></th> -->
                         <td><?= $row->nama ?></td>
                         <td><?= $row->deskripsi ?></td>
                         <td style="text-align: center"><?= $row->periode ?></td>
@@ -57,4 +57,15 @@
             </div>
         </div>     
     </body>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+    
+    <script>
+    $(document).ready( function () {
+        $('#tabel_imunisasi').DataTable({
+            "lengthMenu": [[ 5, 10, 15, 20, "-1" ],[ 5, 10, 15, 20, "All" ]]
+        });
+    } );
+    </script>
 </html>
