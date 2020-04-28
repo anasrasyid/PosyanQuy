@@ -47,6 +47,9 @@
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
+    <!-- Sweet Alert 2 file/js -->
+    <script src="<?= base_url(); ?>assets/admin.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -290,7 +293,7 @@
                 <div class="modal-body">
 
                     <!-- form -->
-                    <form id="formCreateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/create') ?>">
+                    <form id="formCreateImunisasi" method="POST" onsubmit="sweet(this);" action="<?= site_url('admin/imunisasi/create') ?>">
                         <div class="formCreate">
                             <label for="formGroupExampleInput">Nama</label>
                             <input type="text" class="form-control" name="namaVaksin" placeholder="Nama Imunisasi" required>

@@ -1,3 +1,45 @@
+function sweet(respond,e) {
+
+    //non aktif href pada tombol delete, digunakan untuk sweetalert !respond
+    //e.preventDefault();
+
+    if(respond){
+        // berhasil di Create
+        Swal.fire({
+            icon: 'success',
+            title: 'Data berhasil Di Tambahkan',
+            type: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+          })
+
+    }else if(!respond){
+        // berhasil di Delete
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "data akan dihapus dan tidak bisa dikembalikan",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              document.location.href = $(this).attr('href');
+            }
+          })
+    }else{
+        //error
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ada kesalahan yang terjadi!'
+          })
+    }    
+}
+
+
+
 $(function() {
     var select2Config = {
         theme: 'bootstrap4',
