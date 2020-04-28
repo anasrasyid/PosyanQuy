@@ -41,6 +41,11 @@
     <!--icon bar title-->
     <link rel="icon" href="<?= base_url('assets/ic_local_hospital_48px.1.svg') ?>" type="image/icon type">
 
+    
+    <!-- Sweet Alert 2 CDN -->
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
