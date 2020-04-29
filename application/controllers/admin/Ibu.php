@@ -5,6 +5,9 @@ class Ibu extends CI_Controller {
     
 	public function __construct() {
         parent::__construct();
+        if(!$this->session->has_userdata('id_kader')) {
+            return redirect('login');
+        }
         $this->load->model('ibu_model', 'ibu');
         $this->load->model('anak_model', 'anak');
   	}
@@ -26,12 +29,7 @@ class Ibu extends CI_Controller {
                 'email' => $this->input->post('emailIbu'),
                 'password' => $this->input->post('passwordIbu')
             ];
-            //nanti return hasil boolean createnya aja saat implement sweetalert
-            if ($this->ibu->create($data)) {
-                redirect('admin/');
-            } else {
-                die('gagal anjing');
-            }
+            echo $this->ibu->create($data);
         }
     }
     
@@ -40,26 +38,14 @@ class Ibu extends CI_Controller {
             $id = $this->input->post('idIbu');
             $data = [
                 'nama' => $this->input->post('namaIbu'),
-                'alamat' => $this->input->post('alamatIbu'),
-                // 'email' => $this->input->post('emailIbu'),
-                // 'password' => $this->input->post('passwordIbu')
+                'alamat' => $this->input->post('alamatIbu')
             ];
-            //nanti return hasil boolean updatenya aja saat implement sweetalert
-            if ($this->ibu->update($id, $data)) {
-                redirect('admin/');
-            } else {
-                die('gagal anjing');
-            }
+            echo $this->ibu->update($id, $data);
         }
     }
     
     public function delete($id) {
-        //nanti return hasil boolean deletenya aja saat implement sweetalert
-        if ($this->ibu->delete($id)) {
-            redirect('admin/');
-        } else {
-            die('gagal anjing');
-        }
+        echo $this->ibu->delete($id);
     }
     
     public function search($keyword = '') {

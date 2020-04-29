@@ -41,15 +41,6 @@
     <!--icon bar title-->
     <link rel="icon" href="<?= base_url('assets/ic_local_hospital_48px.1.svg') ?>" type="image/icon type">
 
-    
-    <!-- Sweet Alert 2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
-    <!-- Sweet Alert 2 file/js -->
-    <script src="<?= base_url(); ?>assets/admin.js"></script>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -87,7 +78,7 @@
 
                 <hr>
                 <!-- LOGOUT -->
-                <a class="nav-link" id="v-pills-logout-tab" href="#logout" aria-selected="false"><img src="<?= base_url('assets/log-out.svg') ?>" style="height: 24px">Logout</a>
+                <a class="nav-link" id="v-pills-logout-tab" href="<?= site_url('admin/logout') ?>" aria-selected="false"><img src="<?= base_url('assets/log-out.svg') ?>" style="height: 24px">Logout</a>
 
             </div>
         </div>
@@ -293,7 +284,7 @@
                 <div class="modal-body">
 
                     <!-- form -->
-                    <form id="formCreateImunisasi" method="POST" onsubmit="sweet(this);" action="<?= site_url('admin/imunisasi/create') ?>">
+                    <form id="formCreateImunisasi" method="POST" action="<?= site_url('admin/imunisasi/create') ?>">
                         <div class="formCreate">
                             <label for="formGroupExampleInput">Nama</label>
                             <input type="text" class="form-control" name="namaVaksin" placeholder="Nama Imunisasi" required>
@@ -310,11 +301,6 @@
                             <label for="formGroupExampleInput2">Periode</label>
                             <input type="number" class="form-control" name="periodeVaksin" placeholder="x" required>
                         </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput2">ID kader</label>
-                            <input type="number" class="form-control" name="idKader" placeholder="13011xxxxx" required>
-                        </div>
-
                     </form>
 
                 </div>

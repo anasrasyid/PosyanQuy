@@ -46,7 +46,8 @@ class User extends CI_Controller {
                 redirect("member/index");
             }
             if($result->type == 1){
-                redirect("admin/Dashboard");
+                $this->session->set_userdata('id_kader',$result->id);
+                redirect("admin/");
             }
         }
     }

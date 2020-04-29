@@ -68,7 +68,7 @@ class Member extends CI_Controller
     }
   }
 
-  public function logout(){
+  public function logout() {
     // destroy session and back to landing page
     $this->session->sess_destroy();
     redirect('');

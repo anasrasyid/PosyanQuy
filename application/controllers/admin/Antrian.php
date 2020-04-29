@@ -5,6 +5,9 @@ class Antrian extends CI_Controller {
     
 	public function __construct() {
         parent::__construct();
+        if(!$this->session->has_userdata('id_kader')) {
+            return redirect('login');
+        }
         $this->load->model('antrian_model', 'antrian');
   	}
     
@@ -17,30 +20,8 @@ class Antrian extends CI_Controller {
         $this->output->set_output(json_encode($this->antrian->get($id)));
     }
     
-    /*
-    public function create() {
-        if ($this->input->method() === 'post') {
-            $data = [
-                'waktu' => $this->input->post(''),
-                'id_ibu' => $this->input->post(''),
-                'id_anak' => $this->input->post('')
-            ];
-            if ($this->antrian->create($data)) {
-                redirect('admin/');
-            } else {
-                die('gagal anjing');
-            }
-            
-    }
-    */
-    
     public function delete($id) {
-        //nanti return hasil boolean deletenya aja saat implement sweetalert
-        if ($this->antrian->delete($id)) {
-            redirect('admin/');
-        } else {
-            die('gagal anjing');
-        }
+        echo $this->antrian->delete($id);
     }
     
     public function search($keyword = '') {

@@ -1,46 +1,89 @@
-function sweet(respond,e) {
-
-    //non aktif href pada tombol delete, digunakan untuk sweetalert !respond
-    //e.preventDefault();
-
-    if(respond){
-        // berhasil di Create
-        Swal.fire({
-            icon: 'success',
-            title: 'Data berhasil Di Tambahkan',
-            type: 'success',
-            showConfirmButton: false,
-            timer: 1500,
-          })
-
-    }else if(!respond){
-        // berhasil di Delete
-        Swal.fire({
-            title: 'Apakah anda yakin?',
-            text: "data akan dihapus dan tidak bisa dikembalikan",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.value) {
-              document.location.href = $(this).attr('href');
-            }
-          })
-    }else{
-        //error
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Ada kesalahan yang terjadi!'
-          })
-    }    
-}
-
-
-
 $(function() {
+    
+    var sweetSuccess = {
+        icon: 'success',
+        title: 'Operasi sukses!',
+        showConfirmButton: false,
+        timer: 2000
+    };
+    
+    var sweetFailed = {
+        icon: 'error',
+        title: 'Failed',
+        text: 'Gagal melakukan operasi!'
+    };
+    
+    var sweetError = {
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ada kesalahan yang terjadi!'
+    };
+    
+    var sweetConfirmation = {
+        title: 'Apakah anda yakin?',
+        text: "data akan dihapus dan tidak bisa dikembalikan",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }
+    
+    $('form:not([id^=\'formSearch\'])').submit((e) => {
+        var form = e.currentTarget;
+        
+        e.preventDefault();
+        $.post(form.action, $(form).serialize())
+            .done((data) => {
+                if (data === '1') {
+                    form.reset();
+                    $(form).closest('.modal').modal('hide');
+                    Swal.fire(sweetSuccess);
+                    if (form.id.endsWith('Imunisasi')) {
+                        searchImunisasi();
+                    } else if (form.id.endsWith('Ibu')) {
+                        searchIbu();
+                    } else if (form.id.endsWith('Anak')) {
+                        searchAnak();
+                    }
+                } else if (data === '0') {
+                    Swal.fire(sweetFailed);
+                } else {
+                    Swal.fire(sweetError);
+                }
+            });
+    });
+    
+    window.deleteConfirmation = (e, btn) => {
+        e.preventDefault();
+        Swal.fire(sweetConfirmation).then((res) => {
+            if (res.value) {
+                $.get(btn.href)
+                    .done((data) => {
+                        if (data === '1') {
+                            Swal.fire(sweetSuccess);
+                            if (btn.href.includes('/imunisasi/')) {
+                                searchImunisasi();
+                            } else if (btn.href.includes('/ibu/')) {
+                                searchIbu();
+                            } else if (btn.href.includes('/anak/')) {
+                                searchAnak();
+                            } else if (btn.href.includes('/antrian/')) {
+                                searchAntrian();
+                            }
+                        } else if (data === '0') {
+                            Swal.fire(sweetFailed);
+                        } else {
+                            Swal.fire(sweetError);
+                        }
+                    }).fail(() => {
+                        Swal.fire(sweetError);
+                    });
+            }
+        });
+    }
+    
+    
     var select2Config = {
         theme: 'bootstrap4',
         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
@@ -115,7 +158,7 @@ $(function() {
                   <th scope="row">${row['id']}</th>
                   <td>${row['tanggal']}</td>
                   <td>${row['nama_vaksin']}</td>
-                  <td><a type="button" class="btn btn-danger" href="anak/deleteVaksin/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a></td>
+                  <td><a type="button" class="btn btn-danger" href="anak/deleteVaksin/${row['id']}" onClick="deleteConfirmation(event, this);" >Delete</a></td>
                 </tr>
                 `);
             };
@@ -140,7 +183,7 @@ $(function() {
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateImunisasi" onclick="setFormUpdateImunisasi(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
-                      <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                      <a type="button" class="btn btn-danger" href="imunisasi/delete/${row['id']}" onClick="deleteConfirmation(event, this);" >Delete</a>
                     </div>
                   </td>
                 </tr>
@@ -169,7 +212,7 @@ $(function() {
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateIbu" onclick="setFormUpdateIbu(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
-                      <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                      <a type="button" class="btn btn-danger" href="ibu/delete/${row['id']}" onClick="deleteConfirmation(event, this);" >Delete</a>
                     </div>
                   </td>
                 </tr>
@@ -202,7 +245,7 @@ $(function() {
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateAnak" onclick="setFormUpdateAnak(${row['id']})">Edit</button>
                     </div>
                     <div class="card-body flex-column d-flex">
-                      <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a>
+                      <a type="button" class="btn btn-danger" href="anak/delete/${row['id']}" onClick="deleteConfirmation(event, this);" >Delete</a>
                     </div>
                   </td>
                 </tr>
@@ -221,7 +264,7 @@ $(function() {
                   <th scope="row">${row['id']}</th>
                   <td>${row['waktu']}</td>
                   <td>${row['id_ibu'] + ' - ' + row['nama_ibu']}</td>
-                  <td><a type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="return confirm('Apakah Anda Yakin?')" >Delete</a></td>
+                  <td><a type="button" class="btn btn-danger" href="antrian/delete/${row['id']}" onClick="deleteConfirmation(event, this);" >Delete</a></td>
                 </tr>
                 `);
             };

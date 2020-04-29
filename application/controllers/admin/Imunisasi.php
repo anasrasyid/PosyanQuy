@@ -5,6 +5,9 @@ class Imunisasi extends CI_Controller {
     
 	public function __construct() {
         parent::__construct();
+        if(!$this->session->has_userdata('id_kader')) {
+            return redirect('login');
+        }
         $this->load->model('imunisasi_model', 'imunisasi');
   	}
     
@@ -24,14 +27,9 @@ class Imunisasi extends CI_Controller {
                 'syarat_umur' => $this->input->post('syaratUmur'),
                 'deskripsi' => $this->input->post('deskripsiVaksin'),
                 'periode' => $this->input->post('periodeVaksin'),
-                'id_kader' => $this->input->post('idKader')
+                'id_kader' => $this->session->id_kader
             ];
-            //nanti return hasil boolean createnya aja saat implement sweetalert
-            if ($this->imunisasi->create($data)) {
-                redirect('admin/');
-            } else {
-                die('gagal anjing');
-            }
+            echo $this->imunisasi->create($data);
         }
     }
     
@@ -44,22 +42,12 @@ class Imunisasi extends CI_Controller {
                 'deskripsi' => $this->input->post('deskripsiVaksin'),
                 'periode' => $this->input->post('periodeVaksin')
             ];
-            //nanti return hasil boolean updatenya aja saat implement sweetalert
-            if ($this->imunisasi->update($id, $data)) {
-                redirect('admin/');
-            } else {
-                die('gagal anjing');
-            }
+            echo $this->imunisasi->update($id, $data);
         }
     }
     
     public function delete($id) {
-        //nanti return hasil boolean deletenya aja saat implement sweetalert
-        if ($this->imunisasi->delete($id)) {
-            redirect('admin/');
-        } else {
-            die('gagal anjing');
-        }
+        echo $this->imunisasi->delete($id);
     }
     
     public function search($keyword = '') {  
